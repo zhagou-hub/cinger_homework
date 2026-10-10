@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#136e64">
+  <meta name="description" content="智质图谱：人工智能驱动新质生产力的可视化探索。通过里程碑折线图、中心词云和任务思维导图认识人工智能。">
+  <title>认识新质 · 智质图谱</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23136e64'/%3E%3Ctext x='32' y='45' text-anchor='middle' fill='white' font-family='sans-serif' font-size='40'%3E谱%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="./src/layout.css">
+  <link rel="stylesheet" href="./src/columns.css">
+  <script type="module" src="./src/app.js"></script>
+  <script type="module" src="./src/ai-explorer.js"></script>
+<link rel="stylesheet" href="./src/reading.css">  <link rel="stylesheet" href="./src/principles.css">
+  <link rel="stylesheet" href="./src/intro.css">
+<link rel="stylesheet" href="./src/reading-theme.css"></head>
+<body data-page="understand" data-columns="true" data-scroll-sections="true" data-ai="true">
+
+  <a class="skip" href="#page-content">跳到可视化</a>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="智质图谱，回到认识新质"><span class="brand-mark">谱</span><span>智质图谱<span class="brand-en">AI × PRODUCTIVITY ATLAS</span></span></a>
+    <button class="menu-toggle" aria-label="展开功能导航" aria-expanded="false" aria-controls="main-nav">功能 <span>☰</span></button>
+    <nav id="main-nav" aria-label="功能导航"><a href="./understand.html" data-page="understand" class="active" aria-current="page">认识新质</a><a href="./mechanism.html" data-page="mechanism">驱动机制</a><a href="./applications.html" data-page="applications">应用实践</a><a href="./people.html" data-page="people">人的位置</a><a href="./futures.html" data-page="futures">未来路径</a></nav>
+    <a class="header-source" href="./sources.html">数据与方法 <span>↗</span></a>
+  </header>
+  <main id="page-content" tabindex="-1">
+    <div class="page-toolbar wrap"><div class="page-title"><h1>认识新质</h1><p class="site-theme">人工智能驱动新质生产力的可视化探索</p></div><a class="page-source" href="./sources.html#ai-methods">数据与原理依据 ↗</a></div>
+    <section id="understand" class="section wrap column-section reading-layout">
+      <aside class="section-sidebar"><span class="sidebar-caption">认识新质 / 内容导航</span><nav aria-label="本页图表目录"><a href="#ai-history" data-section-link="history"><span>01</span>发展历程</a><a href="#ai-concepts" data-section-link="concepts"><span>02</span>概念解析</a><a href="#ai-tasks" data-section-link="tasks"><span>03</span>任务类别</a></nav><p class="sidebar-note">选择、观察与展开<br>沿三段图形继续阅读</p></aside>
+      <div class="reading-content">
+        <article id="ai-history" class="reading-section" data-reading-section="history" tabindex="-1">
+          <span class="section-number">01 / 发展历程</span>
+          <div class="column-heading"><div><h2>发展历程</h2><p>从行为检验到生成模型，沿九个重要节点认识人工智能的发展。点击节点，直接在图中阅读事件。</p></div><span class="column-tag">精选历史节点 · 1950—2024</span></div>
+          <div id="history-visual" class="ai-stage" data-visual="history" aria-label="发展历程交互图形"></div>
+        </article>
+
+        <article id="ai-concepts" class="reading-section" data-reading-section="concepts" tabindex="-1">
+          <span class="section-number">02 / 概念解析</span>
+          <div class="column-heading"><div><h2>概念解析</h2><p>以人工智能为中心，区分方法的包含关系与任务、应用的延伸关系。点击词语查看解释。</p></div><span class="column-tag">22 个概念 · 稳定导览</span></div>
+          <div id="concepts-visual" class="ai-stage" data-visual="concepts" aria-label="概念解析交互图形"></div>
+        </article>
+
+        <article id="ai-tasks" class="reading-section" data-reading-section="tasks" tabindex="-1">
+          <span class="section-number">03 / 任务类别</span>
+          <div class="column-heading"><div><h2>任务类别</h2><p>从目标与输出理解四类任务：识别、预测、生成与决策。沿分支查看典型输入和输出。</p></div><span class="column-tag">输入 → 任务 → 输出</span></div>
+          <div id="tasks-visual" class="ai-stage" data-visual="tasks" aria-label="任务类别交互图形"></div>
+        </article>
+        <p class="ai-next">模型以数值表示为输入，通过训练调整参数，并使用已学参数处理新样本。 <a href="./mechanism.html">进入驱动机制 →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><span>智质图谱 · 人工智能驱动新质生产力的可视化探索</span><span>精选 AI 历史：1950—2024</span><a href="./sources.html">数据与方法 ↗</a></footer>
+  <dialog id="source-dialog" aria-labelledby="source-dialog-title"><button class="dialog-close" aria-label="关闭来源说明">×</button><div id="source-dialog-content"></div></dialog>
+  <div class="toast" role="status" aria-live="polite" hidden=""></div>
+  <noscript><div class="noscript">交互图表需要启用 JavaScript。<a href="./sources.html">查看数据与方法</a>。</div></noscript>
+
+
+</body></html>

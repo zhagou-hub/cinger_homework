@@ -1,266 +1,58 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="通过八个核心知识点、真实案例与交互实验，系统学习页面结构、CSS 布局与可靠性检查。">
-  <meta name="theme-color" content="#111a38">
-  <title>页面布局学习实验室</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111a38'/%3E%3Cpath d='M14 15h36v34H14z' fill='none' stroke='%23d8f24b' stroke-width='5'/%3E%3Cpath d='M27 17v30M29 29h19' stroke='%23d8f24b' stroke-width='5'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./layout-lab/layout-lab.css">
-</head>
-<body>
-  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <meta name="theme-color" content="#136e64">
+  <meta name="description" content="智质图谱：人工智能驱动新质生产力的可视化探索。通过里程碑折线图、中心词云和任务思维导图认识人工智能。">
+  <title>认识新质 · 智质图谱</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23136e64'/%3E%3Ctext x='32' y='45' text-anchor='middle' fill='white' font-family='sans-serif' font-size='40'%3E谱%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="./src/layout.css">
+  <link rel="stylesheet" href="./src/columns.css">
+  <script type="module" src="./src/app.js"></script>
+  <script type="module" src="./src/ai-explorer.js"></script>
+<link rel="stylesheet" href="./src/reading.css">  <link rel="stylesheet" href="./src/principles.css">
+  <link rel="stylesheet" href="./src/intro.css">
+<link rel="stylesheet" href="./src/reading-theme.css"></head>
+<body data-page="understand" data-columns="true" data-scroll-sections="true" data-ai="true">
 
+  <a class="skip" href="#page-content">跳到可视化</a>
   <header class="site-header">
-    <a class="brand" href="#learning" aria-label="页面布局学习实验室首页">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span><b>页面布局</b><small>学习实验室</small></span>
-    </a>
-    <nav class="view-switch" aria-label="主栏目" role="tablist">
-      <button class="view-tab active" id="tab-learning" type="button" role="tab" aria-selected="true" aria-controls="view-learning" data-view-target="learning">
-        <span aria-hidden="true">◫</span> 学习路径
-      </button>
-      <button class="view-tab" id="tab-markdown" type="button" role="tab" aria-selected="false" aria-controls="view-markdown" data-view-target="markdown">
-        <span aria-hidden="true">#</span> 知识点 Markdown
-      </button>
-      <button class="view-tab" id="tab-lab" type="button" role="tab" aria-selected="false" aria-controls="view-lab" data-view-target="lab" tabindex="-1">
-        <span aria-hidden="true">✦</span> 亮点实验室
-      </button>
-    </nav>
-    <div class="header-progress" aria-live="polite">
-      <span class="progress-ring" id="header-ring" style="--progress:0"><b id="header-progress-count">0</b></span>
-      <span><small>学习进度</small><strong id="header-progress-text">0 / 8</strong></span>
-    </div>
+    <a class="brand" href="./index.html" aria-label="智质图谱，回到认识新质"><span class="brand-mark">谱</span><span>智质图谱<span class="brand-en">AI × PRODUCTIVITY ATLAS</span></span></a>
+    <button class="menu-toggle" aria-label="展开功能导航" aria-expanded="false" aria-controls="main-nav">功能 <span>☰</span></button>
+    <nav id="main-nav" aria-label="功能导航"><a href="./understand.html" data-page="understand" class="active" aria-current="page">认识新质</a><a href="./mechanism.html" data-page="mechanism">驱动机制</a><a href="./applications.html" data-page="applications">应用实践</a><a href="./people.html" data-page="people">人的位置</a><a href="./futures.html" data-page="futures">未来路径</a></nav>
+    <a class="header-source" href="./sources.html">数据与方法 <span>↗</span></a>
   </header>
+  <main id="page-content" tabindex="-1">
+    <div class="page-toolbar wrap"><div class="page-title"><h1>认识新质</h1><p class="site-theme">人工智能驱动新质生产力的可视化探索</p></div><a class="page-source" href="./sources.html#ai-methods">数据与原理依据 ↗</a></div>
+    <section id="understand" class="section wrap column-section reading-layout">
+      <aside class="section-sidebar"><span class="sidebar-caption">认识新质 / 内容导航</span><nav aria-label="本页图表目录"><a href="#ai-history" data-section-link="history"><span>01</span>发展历程</a><a href="#ai-concepts" data-section-link="concepts"><span>02</span>概念解析</a><a href="#ai-tasks" data-section-link="tasks"><span>03</span>任务类别</a></nav><p class="sidebar-note">选择、观察与展开<br>沿三段图形继续阅读</p></aside>
+      <div class="reading-content">
+        <article id="ai-history" class="reading-section" data-reading-section="history" tabindex="-1">
+          <span class="section-number">01 / 发展历程</span>
+          <div class="column-heading"><div><h2>发展历程</h2><p>从行为检验到生成模型，沿九个重要节点认识人工智能的发展。点击节点，直接在图中阅读事件。</p></div><span class="column-tag">精选历史节点 · 1950—2024</span></div>
+          <div id="history-visual" class="ai-stage" data-visual="history" aria-label="发展历程交互图形"></div>
+        </article>
 
-  <main id="main-content">
-    <section class="app-view active" id="view-learning" role="tabpanel" aria-labelledby="tab-learning" data-view="learning">
-      <div class="course-shell">
-        <section class="course-overview" aria-labelledby="course-title">
-          <div class="overview-copy">
-            <p class="eyebrow">CSS LAYOUT · 8 个核心知识点</p>
-            <h1 id="course-title">页面布局，从判断到实现</h1>
-            <p>不是背属性，而是学会先读内容、再选工具、最后验证。每个知识点都配有真实页面案例、多个关键代码方案和可操作实验。</p>
-            <div class="hero-meta" aria-label="课程概览">
-              <span>8 个知识点</span>
-              <span>24 组关键代码</span>
-              <span>8 个案例实验</span>
-              <span>纯前端交互</span>
-            </div>
-          </div>
-          <div class="hero-board" aria-hidden="true">
-            <div class="board-toolbar"><i></i><i></i><i></i></div>
-            <div class="board-layout">
-              <div class="board-nav"></div>
-              <div class="board-main">
-                <div class="board-title"></div>
-                <div class="board-grid"><i></i><i></i><i></i><i></i></div>
-              </div>
-            </div>
-            <span class="board-label">8 LESSONS / 24 CODE</span>
-          </div>
-        </section>
+        <article id="ai-concepts" class="reading-section" data-reading-section="concepts" tabindex="-1">
+          <span class="section-number">02 / 概念解析</span>
+          <div class="column-heading"><div><h2>概念解析</h2><p>以人工智能为中心，区分方法的包含关系与任务、应用的延伸关系。点击词语查看解释。</p></div><span class="column-tag">22 个概念 · 稳定导览</span></div>
+          <div id="concepts-visual" class="ai-stage" data-visual="concepts" aria-label="概念解析交互图形"></div>
+        </article>
 
-        <div class="learning-shell">
-          <aside class="path-panel" aria-labelledby="path-title">
-            <div class="path-panel-head">
-              <h2 id="path-title">学习路径</h2>
-              <strong><span id="sidebar-progress-count">0</span> / 8</strong>
-            </div>
-            <div class="sidebar-progress-track" aria-hidden="true"><i id="sidebar-progress-bar"></i></div>
-            <div class="knowledge-path" id="knowledge-path" aria-label="八个知识点"></div>
-            <div class="path-note">
-              <strong>主动学习</strong>
-              <p>每节包含讲解、3 组关键代码和案例实验。学完后可标记完成。</p>
-              <button class="quiet-button" type="button" id="reset-progress">重置学习记录</button>
-            </div>
-          </aside>
-
-          <article class="lesson-card" id="lesson-card" aria-labelledby="lesson-title">
-          <header class="lesson-heading">
-            <div class="lesson-index" id="lesson-index">01</div>
-            <div class="lesson-heading-copy">
-              <p class="lesson-meta"><span id="lesson-type">基础判断</span><span id="lesson-time">约 12 分钟</span></p>
-              <h2 id="lesson-title">页面结构与布局准则</h2>
-              <p id="lesson-summary">先建立阅读顺序和内容关系，再决定网格与 CSS 工具。</p>
-              <div class="lesson-tags" id="lesson-tags"></div>
-            </div>
-            <button class="complete-button" type="button" id="complete-lesson" aria-pressed="false">
-              <span class="complete-icon" aria-hidden="true">✓</span>
-              <span class="complete-label">标记学完</span>
-            </button>
-          </header>
-
-          <div class="lesson-tabs" role="tablist" aria-label="知识点内容">
-            <button class="lesson-tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-explain" data-lesson-tab="explain">讲解</button>
-            <button class="lesson-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-code" data-lesson-tab="code">关键代码 <span>3</span></button>
-            <button class="lesson-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-demo" data-lesson-tab="demo">案例演示</button>
-          </div>
-
-          <section class="lesson-panel active" id="panel-explain" role="tabpanel" data-lesson-panel="explain"></section>
-          <section class="lesson-panel" id="panel-code" role="tabpanel" data-lesson-panel="code" hidden></section>
-          <section class="lesson-panel" id="panel-demo" role="tabpanel" data-lesson-panel="demo" hidden></section>
-
-          <footer class="lesson-footer">
-            <button class="lesson-nav-button" type="button" id="prev-lesson"><span>←</span><small>上一个知识点</small><strong id="prev-title">—</strong></button>
-            <p>完成讲解、代码和实验后，记得标记学完。</p>
-            <button class="lesson-nav-button next" type="button" id="next-lesson"><small>下一个知识点</small><strong id="next-title">文档流与盒模型</strong><span>→</span></button>
-          </footer>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="app-view markdown-view" id="view-markdown" role="tabpanel" aria-labelledby="tab-markdown" data-view="markdown" hidden>
-      <div class="markdown-shell">
-        <header class="markdown-heading">
-          <div>
-            <p class="eyebrow">可下载课程讲义</p>
-            <h1>知识点 Markdown</h1>
-            <p>八个板块已统一整理为一份结构清晰的讲义，包含概念、判断方法、真实案例与全部关键代码。</p>
-          </div>
-          <div class="markdown-actions">
-            <button class="secondary-button" type="button" id="copy-markdown">复制 Markdown</button>
-            <button class="primary-button" type="button" id="download-markdown">下载 .md 文件</button>
-          </div>
-        </header>
-        <div class="markdown-layout">
-          <aside class="markdown-toc" aria-label="讲义目录">
-            <p>讲义目录</p>
-            <ol id="markdown-toc"></ol>
-          </aside>
-          <article class="markdown-preview" id="markdown-preview"></article>
-        </div>
-      </div>
-    </section>
-    <section class="app-view" id="view-lab" role="tabpanel" aria-labelledby="tab-lab" data-view="lab" hidden>
-      <div class="ll-app" id="layout-lens" lang="zh-CN">
-        <header class="ll-hero">
-          <div class="ll-hero-copy">
-            <p class="ll-kicker"><span class="ll-spark" aria-hidden="true">✳</span> LAYOUT LENS <span class="ll-kicker-divider"></span><span data-ll-t="labName">亮点实验室</span></p>
-            <h1 data-ll-html="headline">让布局原理，<em>看得见。</em></h1>
-            <p class="ll-subtitle" data-ll-t="subtitle">一个画布，走完「调整 → 观察 → 修复」。不是看演示，而是亲手验证。</p>
-          </div>
-          <div class="ll-hero-actions">
-            <div class="ll-language" role="group" aria-label="实验室语言 / Lab language">
-              <button type="button" data-ll-lang="zh" aria-pressed="true">中</button><button type="button" data-ll-lang="en" aria-pressed="false">EN</button>
-            </div>
-            <button class="ll-button ll-button-quiet" id="ll-tour" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 9 6-9 6Z"/></svg><span data-ll-t="tour">演示一遍</span></button>
-            <button class="ll-button ll-button-dark" id="ll-export" type="button"><span data-ll-t="export">导出实验</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9m-3-3 3 3 3-3M4 12v4h12v-4"/></svg></button>
-          </div>
-        </header>
-
-        <div class="ll-tour-banner" id="ll-tour-banner" hidden>
-          <span class="ll-tour-count" id="ll-tour-count">01 / 04</span><div><strong id="ll-tour-title"></strong><span id="ll-tour-description"></span></div>
-          <button type="button" class="ll-button" id="ll-tour-next" data-ll-t="nextStep">下一步</button>
-          <button type="button" class="ll-icon-button" id="ll-tour-close" data-ll-label="stopTour" aria-label="结束演示"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg></button>
-        </div>
-
-        <div class="ll-workbench">
-          <aside class="ll-sidebar" data-ll-label="recipes" aria-label="实验场景">
-            <div class="ll-section-label"><span data-ll-t="recipes">实验场景</span><span class="ll-mono">01—03</span></div>
-            <div class="ll-scenarios" role="group" data-ll-label="chooseCase" aria-label="选择实验场景">
-              <button type="button" class="ll-scenario is-selected" data-ll-case="grid" aria-pressed="true">
-                <span class="ll-scenario-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-                <span><strong data-ll-t="gridTitle">自适应画廊</strong><small>CSS Grid</small></span><span class="ll-scenario-arrow" aria-hidden="true">↗</span>
-              </button>
-              <button type="button" class="ll-scenario" data-ll-case="flex" aria-pressed="false">
-                <span class="ll-scenario-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="5" height="12" rx="1"/><rect x="11" y="6" width="10" height="12" rx="1"/><path d="M3 3h18M3 21h18"/></svg></span>
-                <span><strong data-ll-t="flexTitle">弹性工具栏</strong><small>Flexbox</small></span><span class="ll-scenario-arrow" aria-hidden="true">↗</span>
-              </button>
-              <button type="button" class="ll-scenario" data-ll-case="editorial" aria-pressed="false">
-                <span class="ll-scenario-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M15 3v18M6 7h6M6 11h6M6 15h4"/></svg></span>
-                <span><strong data-ll-t="editorialTitle">双栏阅读页</strong><small>Container Query</small></span><span class="ll-scenario-arrow" aria-hidden="true">↗</span>
-              </button>
-            </div>
-            <div class="ll-variables">
-              <div class="ll-section-label"><span data-ll-t="variables">布局变量</span><button type="button" class="ll-icon-button" id="ll-reset" data-ll-label="reset" aria-label="重置当前实验"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 7a6 6 0 1 1 0 6M4 3v4h4"/></svg></button></div>
-              <label class="ll-range-field" for="ll-gap"><span><b data-ll-t="gap">元素间距</b><output for="ll-gap" id="ll-gap-value">16 px</output></span><input type="range" min="8" max="32" step="2" value="16" id="ll-gap"><span class="ll-range-limits"><span>8</span><span>32 px</span></span></label>
-              <label class="ll-range-field" for="ll-min"><span><b id="ll-min-label">卡片最小宽度</b><output for="ll-min" id="ll-min-value">220 px</output></span><input type="range" min="160" max="280" step="10" value="220" id="ll-min"><span class="ll-range-limits"><span>160</span><span>280 px</span></span></label>
-            </div>
-            <div class="ll-stress">
-              <div class="ll-section-label"><span data-ll-t="stress">内容压力</span><span class="ll-tiny-dot" aria-hidden="true"></span></div>
-              <button type="button" class="ll-toggle" id="ll-long" aria-pressed="false"><span class="ll-toggle-symbol" aria-hidden="true">Aa↗</span><span data-ll-t="longText">超长文案</span><i class="ll-toggle-track" aria-hidden="true"></i></button>
-              <button type="button" class="ll-toggle" id="ll-text-zoom" aria-pressed="false"><span class="ll-toggle-symbol" aria-hidden="true">2×</span><span data-ll-t="doubleText">文字放大</span><i class="ll-toggle-track" aria-hidden="true"></i></button>
-              <p class="ll-subtle-note" data-ll-t="stressNote">仅改变示例内容，不缩放操作界面。</p>
-            </div>
-            <button type="button" class="ll-challenge" id="ll-challenge"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m11 2-7 9h5l-1 7 8-10h-5Z"/></svg><span data-ll-t="challenge">制造一次布局故障</span><span aria-hidden="true">↗</span></button>
-          </aside>
-
-          <section class="ll-stage" data-ll-label="canvas" aria-label="实时布局画布">
-            <div class="ll-canvas-toolbar">
-              <div class="ll-devices" role="group" data-ll-label="device" aria-label="模拟容器尺寸">
-                <button type="button" data-ll-device="960" aria-pressed="true" data-ll-label="desktop" aria-label="桌面 960px"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="16" height="11" rx="1.5"/><path d="M7 17h6m-3-3v3"/></svg><span data-ll-t="desktop">桌面</span></button>
-                <button type="button" data-ll-device="768" aria-pressed="false" data-ll-label="tablet" aria-label="平板 768px"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="2" width="12" height="16" rx="2"/><path d="M9 15h2"/></svg><span data-ll-t="tablet">平板</span></button>
-                <button type="button" data-ll-device="375" aria-pressed="false" data-ll-label="phone" aria-label="手机 375px"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="2" width="10" height="16" rx="2"/><path d="M9 15h2"/></svg><span data-ll-t="phone">手机</span></button>
-              </div>
-              <button type="button" class="ll-lens-toggle" id="ll-guides" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2 8 4-8 4-8-4Zm-8 8 8 4 8-4M2 14l8 4 8-4"/></svg><span data-ll-t="guides">结构透视</span></button>
-            </div>
-            <div class="ll-modebar">
-              <div class="ll-modes" role="group" data-ll-label="rules" aria-label="对比布局规则"><button type="button" data-ll-mode="fixed" aria-pressed="false" data-ll-t="fixed">固定写法</button><button type="button" data-ll-mode="fluid" aria-pressed="true" data-ll-t="fluid">自适应写法</button></div>
-              <span class="ll-live"><i></i><span data-ll-t="live">实时渲染</span></span>
-            </div>
-            <div class="ll-canvas" id="ll-canvas">
-              <div class="ll-ruler" id="ll-ruler" aria-hidden="true"><span>0</span><span>200</span><span>400</span><span>600</span><span>800</span></div>
-              <div class="ll-preview-shell" id="ll-preview-shell">
-                <div class="ll-preview-clip"><div class="ll-document" id="ll-document"></div></div>
-                <button type="button" class="ll-drag-handle" id="ll-drag" role="slider" aria-valuemin="320" aria-valuemax="1200" aria-valuenow="960" data-ll-label="dragWidth" aria-label="拖动改变容器宽度，方向键调整"><i></i></button>
-              </div>
-              <div class="ll-measure-tip" id="ll-measure-tip" hidden></div>
-            </div>
-            <div class="ll-widthbar">
-              <label for="ll-width" data-ll-t="width">容器宽度</label>
-              <div class="ll-width-track"><input type="range" id="ll-width" min="320" max="1200" step="1" value="960"><div class="ll-breakpoints" id="ll-breakpoints" aria-hidden="true"></div></div>
-              <div class="ll-width-input"><input type="number" id="ll-width-number" min="320" max="1200" step="1" value="960" data-ll-label="widthPixels" aria-label="容器宽度（像素）"><span>px</span></div>
-            </div>
-            <div class="ll-canvas-status"><span id="ll-render-status">CSS Grid · 3 列</span><span id="ll-display-scale">画布显示比例 100%</span></div>
-          </section>
-
-          <aside class="ll-inspector" data-ll-label="inspector" aria-label="布局洞察与代码">
-            <div class="ll-inspector-tabs" role="tablist" data-ll-label="inspector" aria-label="布局洞察与代码">
-              <button type="button" id="ll-tab-insight" data-ll-panel="insight" role="tab" aria-controls="ll-panel-insight" aria-selected="true" data-ll-t="insight">布局洞察</button>
-              <button type="button" id="ll-tab-code" data-ll-panel="code" role="tab" aria-controls="ll-panel-code" aria-selected="false" tabindex="-1"><span aria-hidden="true">&lt;/&gt;</span> <span data-ll-t="keyCode">关键代码</span></button>
-            </div>
-            <section class="ll-insight-panel" id="ll-panel-insight" role="tabpanel" aria-labelledby="ll-tab-insight">
-              <span class="ll-tech-label" id="ll-tech-label">GRID / AUTO-FIT</span>
-              <h2 id="ll-insight-title">空间变了，列数自己适应。</h2>
-              <p class="ll-explanation" id="ll-explanation"></p>
-              <div class="ll-metrics" id="ll-metrics"></div>
-              <div class="ll-track-diagram" id="ll-track-diagram" aria-hidden="true"></div>
-              <p class="ll-breakpoint-note" id="ll-breakpoint-note"></p>
-              <div class="ll-audit">
-                <div class="ll-section-label"><span data-ll-t="audit">实时体检</span><span class="ll-audit-pill" id="ll-audit-pill">LIVE</span></div>
-                <div class="ll-audit-rows" id="ll-audit-rows" role="status" aria-live="polite" aria-atomic="true"></div>
-                <button type="button" class="ll-fix-button" id="ll-fix"><span data-ll-t="applyFix">应用自适应规则</span><span aria-hidden="true">↗</span></button>
-                <p class="ll-subtle-note" data-ll-t="auditNote">读取当前画布的真实尺寸，不用预设分数代替检测。</p>
-              </div>
-            </section>
-            <section class="ll-code-panel" id="ll-panel-code" role="tabpanel" aria-labelledby="ll-tab-code" hidden>
-              <div class="ll-code-file"><span><i></i> layout.css</span><span data-ll-t="synchronized">与画布同步</span></div>
-              <pre class="ll-code-pre"><code id="ll-live-code"></code></pre>
-              <p class="ll-code-note" data-ll-t="codeNote">这里就是驱动画布的布局规则。修改参数，CSS 会同步更新。</p>
-              <button type="button" class="ll-button ll-button-dark ll-full" id="ll-copy-css"><span data-ll-t="copyCSS">复制布局 CSS</span><span aria-hidden="true">⧉</span></button>
-              <button type="button" class="ll-button ll-full" id="ll-open-code"><span data-ll-t="fullCode">查看完整 HTML / CSS</span><span aria-hidden="true">↗</span></button>
-              <p class="ll-subtle-note" data-ll-t="exportNote">导出包含当前内容、视觉样式与布局规则，可独立运行。</p>
-            </section>
-          </aside>
-        </div>
-        <footer class="ll-footer"><p><span class="ll-footer-dot"></span><span data-ll-t="footerTip">布局不是固定答案，而是内容与空间之间的关系。</span></p><span data-ll-t="localNote">纯前端运行 · 实验参数自动保存</span></footer>
-        <div class="ll-toast" id="ll-toast" role="status" aria-live="polite"></div>
-        <dialog class="ll-dialog" id="ll-code-dialog" aria-labelledby="ll-dialog-title">
-          <header><div><p class="ll-kicker">LAYOUT LENS / SOURCE</p><h2 id="ll-dialog-title" data-ll-t="sourceTitle">这个实验的完整代码</h2></div><button type="button" class="ll-icon-button" id="ll-close-code" data-ll-label="close" aria-label="关闭"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg></button></header>
-          <div class="ll-dialog-tabs" role="tablist" aria-label="Source"><button type="button" id="ll-source-tab-css" data-ll-source="css" role="tab" aria-selected="true" aria-controls="ll-source-panel">CSS</button><button type="button" id="ll-source-tab-html" data-ll-source="html" role="tab" aria-selected="false" tabindex="-1" aria-controls="ll-source-panel">HTML</button></div>
-          <pre class="ll-source-pre" id="ll-source-panel" role="tabpanel" aria-labelledby="ll-source-tab-css" tabindex="0"><code id="ll-full-code"></code></pre>
-          <footer><span data-ll-t="sourceNote">布局 CSS + 示例外观样式，导出后无需外部依赖。</span><button type="button" class="ll-button" id="ll-copy-source" data-ll-t="copyCurrent">复制当前代码</button><button type="button" class="ll-button ll-button-dark" id="ll-export-dialog" data-ll-t="downloadHTML">下载 HTML</button></footer>
-        </dialog>
+        <article id="ai-tasks" class="reading-section" data-reading-section="tasks" tabindex="-1">
+          <span class="section-number">03 / 任务类别</span>
+          <div class="column-heading"><div><h2>任务类别</h2><p>从目标与输出理解四类任务：识别、预测、生成与决策。沿分支查看典型输入和输出。</p></div><span class="column-tag">输入 → 任务 → 输出</span></div>
+          <div id="tasks-visual" class="ai-stage" data-visual="tasks" aria-label="任务类别交互图形"></div>
+        </article>
+        <p class="ai-next">模型以数值表示为输入，通过训练调整参数，并使用已学参数处理新样本。 <a href="./mechanism.html">进入驱动机制 →</a></p>
       </div>
     </section>
   </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./lesson.js"></script>
-  <script src="./layout-lab/layout-lab.js"></script>
-</body>
-</html>
+  <footer class="site-footer wrap"><span>智质图谱 · 人工智能驱动新质生产力的可视化探索</span><span>精选 AI 历史：1950—2024</span><a href="./sources.html">数据与方法 ↗</a></footer>
+  <dialog id="source-dialog" aria-labelledby="source-dialog-title"><button class="dialog-close" aria-label="关闭来源说明">×</button><div id="source-dialog-content"></div></dialog>
+  <div class="toast" role="status" aria-live="polite" hidden=""></div>
+  <noscript><div class="noscript">交互图表需要启用 JavaScript。<a href="./sources.html">查看数据与方法</a>。</div></noscript>
+
+
+</body></html>

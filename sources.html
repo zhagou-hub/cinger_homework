@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#136e64">
+  <meta name="description" content="智质图谱：人工智能驱动新质生产力的可视化探索。用产业研究、427种职业的任务数据与能源情景，探索人工智能如何驱动新质生产力。一个可阅读、可操作、可追溯的中文数据叙事网站。">
+  <title>数据与方法 · 智质图谱</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23136e64'/%3E%3Ctext x='32' y='45' text-anchor='middle' fill='white' font-family='sans-serif' font-size='40'%3E谱%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="./src/layout.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body data-page="sources">
+
+  <a class="skip" href="#page-content">跳到可视化</a>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="智质图谱，回到认识新质"><span class="brand-mark">谱</span><span>智质图谱<span class="brand-en">AI × PRODUCTIVITY ATLAS</span></span></a>
+    <button class="menu-toggle" aria-label="展开功能导航" aria-expanded="false" aria-controls="main-nav">功能 <span>☰</span></button>
+    <nav id="main-nav" aria-label="功能导航"><a href="./understand.html" data-page="understand">认识新质</a><a href="./mechanism.html" data-page="mechanism">驱动机制</a><a href="./applications.html" data-page="applications">应用实践</a><a href="./people.html" data-page="people">人的位置</a><a href="./futures.html" data-page="futures">未来路径</a></nav>
+    <a class="header-source" href="./sources.html">数据与方法 <span>↗</span></a>
+  </header>
+  <main id="page-content" tabindex="-1"><div class="page-toolbar wrap"><h1>数据与方法</h1><a class="subtle-button" href="./src/data/datasets.json" download="智质图谱-公开数据.json">下载整理数据 ↓</a></div>
+    <section id="sources" class="section wrap sources-section">
+
+      <div id="ai-methods" class="methodology" style="scroll-margin-top:100px;padding:22px 0;margin-top:0"><h2 style="font-size:20px;letter-spacing:0">人工智能原理演示的数据与方法</h2><p style="margin:14px 0;font-size:14px;line-height:1.9">认识新质的九个节点是 1950—2024 年的精选历史事件，来源见 H1—H9。概念导览含 22 个词，字号表示讲解层级；四类任务按目标与输出作教学比较。历程折线按事件先后等距展开，高度仅用于排布；任务思维导图用典型输入与输出解释四类任务。</p><details><summary>固定合成样本、编码与计算配置</summary><div style="font-size:14px;line-height:1.9;padding-bottom:16px"><p>图像来自同一固定 16×16 灰度矩阵，取值 0—255。短文本使用六项教学词表，词元索引从 0 开始；独热向量长度等于词表大小，只有对应索引为 1。像素与词元均不接入下面的二维分类器。</p><p>分类实验使用 48 个训练样本、24 个独立测试样本，分组内 A/B 数量相等。随机种子 20261010；先设标签，再按中心 (0.32,0.35)、(0.68,0.65) 和标准差 0.19 的正态分布生成坐标，限制在 0.025—0.975，保留四位小数。完整生成代码与固定 JSON 随源码保存。</p><p>双特征逻辑回归：z = w₁x + w₂y + b，scoreB = 1 / (1 + exp(−z))，scoreA = 1 − scoreB。B 得分 ≥ 0.5 判为 B。初始参数均为 0，学习率 0.2，全批量梯度下降 200 轮，优化训练集平均二元交叉熵；数值采用稳定 softplus 计算。参数更新后重新计算同轮损失并保存快照。初始推理快照使用相同配置独立计算的默认第 200 轮。</p><p>边界为 z = 0；0.2 / 0.8 等值线按 z = log(q/(1−q)) 求解。损失剖面采用真实更新量，计算 θ(s)=θ+sΔθ，s 范围 −0.5—2，共 61 个点。推理贡献仅表示 w₁x、w₂y、b 的线性累计，不是因果重要性。</p><p>测试、回看和自由输入不更新参数。训练变化后推理结果等待显式同步；自由输入无参考标签，不计入正确数量。得分不表示业务准确率或校准概率，合成损失与测试表现不能换算为产业效率、生产率或经济收益。</p><a href="./src/data/principle-demo.json" download>下载固定教学数据与配置 ↓</a></div></details><p style="font-size:12px;color:#536273;margin-top:12px">原理依据：Google 的 sigmoid、对数损失与独热编码课程；交互参考 R2D3、TensorFlow Playground 与 CNN Explainer。完整出处在下方独立登记。</p></div>
+      <div class="sources-grid" id="sources-grid"></div><details class="methodology"><summary>本项目的数据处理与已知限制 <span>+</span></summary><div><p>小型数据来自交接文件核对过的公开表格；ILO 作者工作簿实际重新下载，SHA-256 与交接版本一致。全站使用静态数据，图表由数值重新绘制。</p><p>ILO 工作簿为 3,265 条任务记录、427 种职业；报告提到 436 种职业，差异原因尚未追溯。职业与任务分别计数，保留原始 potential25 等级，缺失值不填零。部分职业已提供中文译名，英文原名与真实任务原文始终保留。</p><p>客服区间按系数 ± 1.96 × 标准误计算，属于正态近似 95% 区间。农业标准差不解释为置信区间。IEA 保留图表精度（2024 年 416、2030 年基准 946 TWh），不与正文近似值混用。</p><p>制造业使用 2021 年扩展论文的 PR-AUC，未加入其他未核对指标。农业比较完整系统及不同田块，不能识别 AI 的净贡献。视角文字与发展意义为分析，不是新增调查结果。</p><a href="./docs/data-sources.md" download>下载完整来源与处理说明 ↗</a></div></details>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><span>智质图谱 · 人工智能驱动新质生产力的可视化探索</span><span>公开研究版本：2016—2026</span><a href="./sources.html">数据与方法 ↗</a></footer>
+  <dialog id="source-dialog" aria-labelledby="source-dialog-title"><button class="dialog-close" aria-label="关闭来源说明">×</button><div id="source-dialog-content"></div></dialog>
+  <div class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="noscript">交互图表需要启用 JavaScript。<a href="./sources.html">查看数据与方法</a>。</div></noscript>
+</body>
+</html>

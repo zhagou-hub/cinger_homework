@@ -1,0 +1,28 @@
+/* One visual contract for all five columns, loaded after page-specific styles. */
+.page-title{min-width:0}.page-toolbar .site-theme{margin:4px 0 0;font-size:12px;line-height:1.6;color:var(--muted);letter-spacing:0}
+body[data-page]:not([data-page=sources]){--paper:#fff;--ink:#18232c;--muted:#536273;--green:#0b786f;--line:#dce5eb;background:#fff;font-size:16px}
+body[data-page]:not([data-page=sources]) .wrap{width:min(1280px,calc(100% - 80px))}
+body[data-page]:not([data-page=sources]) .reading-layout{display:grid;grid-template-columns:145px minmax(0,1fr);gap:30px;align-items:start}
+body[data-page]:not([data-page=sources]) .section-sidebar{display:block;width:auto;position:sticky;top:86px;border-right:1px solid var(--line);padding:12px 0;max-height:calc(100vh - 108px)}
+body[data-page]:not([data-page=sources]) .section-sidebar nav{display:grid;gap:6px;padding-right:14px}
+body[data-page]:not([data-page=sources]) .section-sidebar a{font-size:14px;padding:12px 9px;gap:8px;color:var(--muted)}
+body[data-page]:not([data-page=sources]) .section-sidebar a:hover{background:#f0f7f5;color:var(--green)}
+body[data-page]:not([data-page=sources]) .section-sidebar a[aria-current=location]{background:#dcefea;color:var(--green);font-weight:600}
+body[data-page]:not([data-page=sources]) .sidebar-caption{font-size:11px;letter-spacing:0;margin-inline:8px;color:#81918f}
+body[data-page]:not([data-page=sources]) .sidebar-note{font-size:12px;color:var(--muted)}
+body[data-page]:not([data-page=sources]) .section-number{font-size:12px;letter-spacing:.08em;color:var(--green);margin-bottom:12px}
+body[data-page]:not([data-page=sources]) .reading-section{padding-bottom:0;margin-bottom:76px;border:0;scroll-margin-top:90px}
+body[data-page]:not([data-page=sources]) .column-heading,body[data-page=people] .insight-heading{display:flex;align-items:flex-start;gap:22px;margin-bottom:23px}
+body[data-page]:not([data-page=sources]) .reading-content :is(.column-heading,.insight-heading) h2{font-size:24px;line-height:1.55;letter-spacing:0;margin-bottom:10px;color:var(--ink)}
+body[data-page]:not([data-page=sources]) .reading-content :is(.column-heading,.insight-heading) p{font-size:16px;line-height:1.9;color:var(--muted);max-width:850px}
+body[data-page]:not([data-page=sources]) :is(.column-tag,.insight-tag){display:none}
+body[data-page=people] :is(.insight-visual,.scatter-panel),body[data-page=futures] :is(.column-chart,.energy-main){border:1px solid var(--line);border-radius:12px;background:#fff;padding:24px;box-shadow:0 3px 14px #18232c04}
+body[data-page=people] :is(.insight-aside,.occupation-detail),body[data-page=futures] :is(.column-aside,.energy-aside){background:#f6f9fa;color:var(--ink);border-color:var(--line);border-radius:10px}
+body[data-page=people] :is(.insight-analysis,.chart-note,.selection-detail p),body[data-page=futures] :is(.column-analysis,.chart-note,.column-note){font-size:13px;line-height:1.9;color:var(--muted)}
+body[data-page=people] :is(.chart-heading h3,.ranking-head h3),body[data-page=futures] .chart-heading h3{font-size:15px;color:var(--ink)}
+body[data-page=people] :is(.insight-ranking,.insight-controls,.world-stat,.china-sample,.map-scale,.treemap-context),body[data-page=futures] :is(.column-chart,.column-aside,.scenario-controls){font-size:13px}
+body[data-page=futures] .col-bar{font-size:13px}body[data-page=futures] .col-bar-axis{font-size:11px}
+body[data-page=futures] .scenario-layout{gap:20px}body[data-page=futures] .scenario-input{font-size:13px}
+@media(max-width:1150px){body[data-page]:not([data-page=sources]) .reading-layout{gap:24px}body[data-page=people] :is(.insight-layout,.people-grid),body[data-page=futures] .energy-layout{grid-template-columns:1fr}}
+@media(max-width:850px){body[data-page]:not([data-page=sources]) .section-sidebar{top:112px}body[data-page]:not([data-page=sources]) .reading-section{scroll-margin-top:128px}}
+@media(max-width:699px){body[data-page]:not([data-page=sources]) .wrap{width:calc(100% - 32px)}body[data-page]:not([data-page=sources]) .reading-layout{display:block}body[data-page]:not([data-page=sources]) .section-sidebar{position:sticky;top:104px;z-index:8;max-height:none;border:0;border-bottom:1px solid var(--line);padding:8px 0;background:#fffffffa;backdrop-filter:blur(10px);margin:0 0 22px;overflow:visible}body[data-page]:not([data-page=sources]) .section-sidebar nav{display:flex;gap:6px;overflow-x:auto;padding:0 0 3px}body[data-page]:not([data-page=sources]) .section-sidebar a{white-space:nowrap;font-size:13px;padding:9px 11px;flex-shrink:0}body[data-page]:not([data-page=sources]) :is(.sidebar-caption,.sidebar-note){display:none}body[data-page]:not([data-page=sources]) .reading-section{margin-bottom:50px;scroll-margin-top:175px}body[data-page]:not([data-page=sources]) .reading-content :is(.column-heading,.insight-heading) h2{font-size:21px}body[data-page]:not([data-page=sources]) .reading-content :is(.column-heading,.insight-heading) p{font-size:14px;line-height:1.85}body[data-page=people] :is(.insight-visual,.scatter-panel),body[data-page=futures] :is(.column-chart,.energy-main){padding:16px}body[data-page]:not([data-page=sources]) .section-number{font-size:11px}}

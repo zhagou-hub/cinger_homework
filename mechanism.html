@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#136e64">
+  <meta name="description" content="智质图谱：人工智能驱动新质生产力的可视化探索。用算力变化、训练数据规模和直观流程图，解释数据、算力与算法如何共同推动人工智能发展。">
+  <title>驱动机制 · 智质图谱</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23136e64'/%3E%3Ctext x='32' y='45' text-anchor='middle' fill='white' font-family='sans-serif' font-size='40'%3E谱%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="./src/layout.css">
+  <link rel="stylesheet" href="./src/columns.css">
+  <script type="module" src="./src/app.js"></script>
+  <script type="module" src="./src/ai-explorer.js"></script>
+<link rel="stylesheet" href="./src/reading.css">  <link rel="stylesheet" href="./src/principles.css">
+  <link rel="stylesheet" href="./src/mechanism.css">
+<link rel="stylesheet" href="./src/reading-theme.css"></head>
+<body data-page="mechanism" data-columns="true" data-scroll-sections="true" data-ai="true">
+
+  <a class="skip" href="#page-content">跳到可视化</a>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="智质图谱，回到认识新质"><span class="brand-mark">谱</span><span>智质图谱<span class="brand-en">AI × PRODUCTIVITY ATLAS</span></span></a>
+    <button class="menu-toggle" aria-label="展开功能导航" aria-expanded="false" aria-controls="main-nav">功能 <span>☰</span></button>
+    <nav id="main-nav" aria-label="功能导航"><a href="./understand.html" data-page="understand">认识新质</a><a href="./mechanism.html" data-page="mechanism" class="active" aria-current="page">驱动机制</a><a href="./applications.html" data-page="applications">应用实践</a><a href="./people.html" data-page="people">人的位置</a><a href="./futures.html" data-page="futures">未来路径</a></nav>
+    <a class="header-source" href="./sources.html">数据与方法 <span>↗</span></a>
+  </header>
+  <main id="page-content" tabindex="-1">
+    <div class="page-toolbar wrap"><h1>驱动机制</h1><a class="page-source" href="#mechanism-evidence">本栏数据与原理依据 ↗</a></div>
+    <section id="mechanism" class="section wrap column-section reading-layout">
+      <aside class="section-sidebar"><span class="sidebar-caption">驱动机制 / 内容导航</span><nav aria-label="本页图表目录"><a href="#ai-origins" data-section-link="origins"><span>01</span>兴起条件</a><a href="#ai-compute" data-section-link="compute"><span>02</span>算力变化</a><a href="#ai-representation" data-section-link="representation"><span>03</span>数据发展与表征</a><a href="#ai-training" data-section-link="training"><span>04</span>模型训练</a><a href="#ai-inference" data-section-link="inference"><span>05</span>任务推理</a></nav><p class="sidebar-note">先看 AI 为什么兴起<br>再看它如何学习与应用</p><button id="reset-demo" class="ai-link">重置数据表征 ↺</button></aside>
+      <div class="reading-content">
+        <article id="ai-origins" class="reading-section" data-reading-section="origins" tabindex="-1">
+          <span class="section-number">01 / 兴起条件</span>
+          <div class="column-heading"><div><h2>兴起条件</h2><p>人工智能研究已有数十年历史。近年来，数字化积累了更多学习材料，计算硬件让大规模训练成为可能，算法进步则把数据和计算转化为可用的能力。三者共同推动了这一轮发展。</p></div><span class="column-tag">数据 × 算力 × 算法</span></div>
+          <div id="origins-visual" class="ai-stage" data-visual="origins" aria-label="人工智能兴起条件图解"></div>
+        </article>
+
+        <article id="ai-compute" class="reading-section" data-reading-section="compute" tabindex="-1">
+          <span class="section-number">02 / 算力变化</span>
+          <div class="column-heading"><div><h2>算力变化</h2><p>模型训练需要反复进行大量数值运算。GPU 的并行计算能力不断提升，加上多卡集群的协同，使更大的数据量与模型规模能够被处理。下面用三代代表性 GPU 展示单卡计算能力的变化。</p></div><span class="column-tag">同一精度 · 单卡峰值</span></div>
+          <div id="compute-visual" class="ai-stage" data-visual="compute" aria-label="GPU计算能力变化可视化"></div>
+        </article>
+
+        <article id="ai-representation" class="reading-section" data-reading-section="representation" tabindex="-1">
+          <span class="section-number">03 / 数据发展与表征</span>
+          <div class="column-heading"><div><h2>数据发展与表征</h2><p>互联网内容、数字化业务记录和传感器提供了更多文本、图像与其他学习材料。第一张图看代表模型的训练数据规模如何扩大；第二张图看这些信息怎样转成机器可计算的数值。</p></div><span class="column-tag">图一看规模 · 图二看表示</span></div>
+          <div id="data-growth-visual" class="ai-stage" aria-label="代表模型训练数据规模变化可视化"></div>
+          <div class="data-second-heading"><span>图 02 / 从信息到数值</span><h3>文本与图像，怎样变成可计算的表示？</h3><p>切换“图像 / 文本”，点选像素或词元，观察原始信息与数值的对应关系。</p></div>
+          <div id="representation-visual" class="ai-stage" data-visual="representation" aria-label="数据表征交互图形"></div>
+        </article>
+
+        <article id="ai-training" class="reading-section" data-reading-section="training" tabindex="-1">
+          <span class="section-number">04 / 模型训练</span>
+          <div class="column-heading"><div><h2>模型训练</h2><p>训练让神经网络学会调整自己的判断。观察信息怎样向前传递、误差怎样向后反馈，以及连接权重怎样随着学习发生变化。</p></div></div>
+          <div id="training-visual" class="ai-stage" data-visual="training" aria-label="神经网络学习过程手动分步图解"></div>
+        </article>
+
+        <article id="ai-inference" class="reading-section" data-reading-section="inference" tabindex="-1">
+          <span class="section-number">05 / 任务推理</span>
+          <div class="column-heading"><div><h2>任务推理</h2><p>推理使用已经学到的连接权重。新输入经过隐藏层计算，最终形成输出；本次计算中，网络的权重保持固定。</p></div></div>
+          <div id="inference-visual" class="ai-stage" data-visual="inference" aria-label="神经网络推理过程手动分步图解"></div>
+        </article>
+        <details id="mechanism-evidence" class="mechanism-evidence"><summary>本栏数据与方法</summary><p>算力方阵按单卡稠密 FP16 Tensor Core 峰值绘制，每格代表 10 TFLOPS；H100 的 989.5 TFLOPS 在图中显示为约 990。圆面积按预训练词元量绘制，Llama 3 使用披露下限 15 万亿。训练与推理使用同一个三输入、四隐藏单元、一输出的教学神经网络，固定八组数值样本；信号、权重和误差由本地计算得到。原始来源与口径保存在项目的数据文件中。</p><a href="https://developer.nvidia.com/blog/nvidia-ampere-architecture-in-depth/" target="_blank" rel="noopener noreferrer">NVIDIA · V100 / A100 规格</a><a href="https://www.nvidia.com/en-us/data-center/h100/" target="_blank" rel="noopener noreferrer">NVIDIA · H100 规格</a><a href="https://arxiv.org/pdf/2005.14165" target="_blank" rel="noopener noreferrer">GPT-3 论文</a><a href="https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md" target="_blank" rel="noopener noreferrer">Llama 2 模型卡</a><a href="https://ai.meta.com/blog/meta-llama-3/" target="_blank" rel="noopener noreferrer">Llama 3 训练数据</a></details>
+        <p class="ai-next">数据提供学习材料，算力支撑大量计算，算法组织学习过程；训练把这些条件转化为模型能力，推理再把能力用于具体任务。 <a href="./applications.html">进入应用实践 →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><span>智质图谱 · 人工智能驱动新质生产力的可视化探索</span><span>公开规格与训练数据规模 · 教学图解</span><a href="#mechanism-evidence">本栏数据与方法 ↗</a></footer>
+  <dialog id="source-dialog" aria-labelledby="source-dialog-title"><button class="dialog-close" aria-label="关闭来源说明">×</button><div id="source-dialog-content"></div></dialog>
+  <div class="toast" role="status" aria-live="polite" hidden=""></div>
+  <noscript><div class="noscript">交互图表需要启用 JavaScript。<a href="./sources.html">查看数据与方法</a>。</div></noscript>
+
+
+</body></html>
