@@ -140,3 +140,44 @@ dialog::backdrop { background: #141b3a70; }
 .field-records-footer .small { padding: 3px 9px; }
 .field-record-note { margin-top: 10px; color: #8a819b; font-size: 10px; line-height: 1.8; }
 @media(max-width:700px) { .field-records-head { flex-wrap: wrap; gap: 9px; } .field-records-head .field { margin-left: auto; } .field-value-track { width: 35px; margin-left: 7px; } .field-record-table th, .field-record-table td { padding: 8px 7px; } .field-records-footer { flex-wrap: wrap; } }
+.study-workspace { display: grid; gap: 22px; }
+.study-brief { padding: 24px 26px 0; border: 1px solid #d7d1f1; border-radius: 12px; background: linear-gradient(115deg,#eeebff,#f8f8ff); }
+.study-title { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 10px 24px; }
+.study-title h2 { font-size: 21px; line-height: 1.5; letter-spacing: -.4px; color: #343059; overflow-wrap: anywhere; }
+.study-title p { color: #817895; font-size: 11px; }
+.study-fields { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 14px; margin: 22px 0; }
+.study-fields .field { color: #6b6089; }
+.study-fields select { color: #41385f; border-color: #d3cbea; background: #fff; }
+.study-route { border-top: 1px solid #ded7f2; padding: 13px 0; font-size: 12px; color: #5b4ca5; }
+.study-route span { padding: 0 13px; color: #a69bc8; }
+.study-route small { float: right; color: #8c82a3; font-size: 10px; }
+.study-section-head { padding: 22px 25px 10px; display: flex; gap: 18px; align-items: flex-start; justify-content: space-between; }
+.study-section-head h2 { color: #34345c; font-size: 17px; font-weight: 650; overflow-wrap: anywhere; }
+.study-section-head p { margin-top: 6px; color: #8a819b; font-size: 11px; }
+.study-section-head button { white-space: nowrap; font-size: 10px; color: #8a7da6; padding: 5px; }
+.study-section-head button .icon { width: 14px; height: 14px; }
+.study-evidence { display: grid; grid-template-columns: minmax(0,2.4fr) minmax(195px,1fr); align-items: stretch; }
+.study-plot { min-width: 0; padding: 10px 20px 20px; }
+.study-svg { width: 100%; height: auto; display: block; }
+.study-svg text { fill: #6c6684; font-family: inherit; font-size: 12px; }
+.study-svg text[fill="white"] { fill: white; }
+.study-svg [data-act] { cursor: pointer; }
+.study-svg [data-act]:hover, .study-svg [data-act]:focus { opacity: 1; stroke: #241e4b; stroke-width: 2px; outline: none; }
+.study-reading { border-left: 1px solid #eeebf4; margin: 12px 0 22px; padding: 0 24px; min-width: 0; }
+.study-finding { background: #f4f2fc; border-left: 3px solid #7862d7; padding: 14px 15px; border-radius: 0 7px 7px 0; }
+.study-finding strong { font-size: 14px; line-height: 1.65; color: #544484; display: block; overflow-wrap: anywhere; }
+.study-finding p { font-size: 11px; line-height: 1.9; color: #7c7196; margin-top: 8px; }
+.study-number-list { margin-top: 18px; }
+.study-number-list>div { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 0; border-bottom: 1px solid #efecf5; font-size: 11px; }
+.study-number-list>div>span { display: flex; align-items: center; gap: 7px; color: #797089; overflow-wrap: anywhere; }
+.study-number-list i, .study-legend i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.study-number-list b { font-size: 17px; color: #514b6b; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.study-number-list small { display: block; font-size: 9px; font-weight: 400; color: #9c91ac; }
+.study-note { color: #8d829e; font-size: 10px; line-height: 1.85; margin-top: 12px; }
+.study-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 0 5px; }
+.study-footer p { font-size: 10px; color: #91869e; }
+.study-footer button { white-space: nowrap; }
+.study-advanced { margin-top: 22px; }
+.study-advanced summary { padding: 17px 22px; cursor: pointer; color: #726886; font-size: 12px; }
+.study-stats-title { padding: 26px 0 12px; }
+.study-unavailable { padding: 30px; color: #8c809b; background: #f7f5fc; border-radius: 10px; }
