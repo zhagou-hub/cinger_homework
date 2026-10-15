@@ -1,3 +1,12 @@
+# 第三次作业：DataLens 数据分析网站
+
+- 在线访问：[https://zhagou-hub.github.io/cinger_homework/homework3/](https://zhagou-hub.github.io/cinger_homework/homework3/)
+- 网站源码、测试与本地启动：[`homework3/`](./homework3/)
+- 发布分支：`homework3`，发布目录：仓库根目录。
+- 原第二次作业保留在原网址；DataLens 使用独立的 `/homework3/` 路径。
+
+---
+
 # 页面布局学习实验室
 
 一个围绕“如何进行页面布局”制作的纯前端中文教学网站。课程以主动学习路径组织 8 个核心知识点，每节包含详细讲解、3 组关键代码、实际案例和可操作实验。

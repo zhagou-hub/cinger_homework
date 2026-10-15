@@ -1,0 +1,11 @@
+{
+  "title": "Palmer Penguins",
+  "source": "https://allisonhorst.github.io/palmerpenguins/",
+  "download": "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins.csv",
+  "retrieved": "2026-10-15",
+  "sha256": "f204db2c753b0937caac3cb35258562c14f073e4bbc76be24b4c51ce22767a93",
+  "license": "CC0-1.0",
+  "collectors": "Dr. Kristen Gorman and Palmer Station Antarctica LTER",
+  "packageAuthors": "Allison Horst, Alison Hill, Kristen Gorman",
+  "normalization": "NA markers become null in memory; original CSV is unchanged. No rows or measurements are generated."
+}

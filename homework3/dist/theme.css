@@ -1,0 +1,117 @@
+/* Indigo workspace: stronger navigation, clear hierarchy, vivid analytical marks. */
+:root {
+  --bg: #eef1fa;
+  --panel: #fff;
+  --ink: #202640;
+  --muted: #65708a;
+  --line: #dce2f1;
+  --accent: #4f46e5;
+  --accent-soft: #eeedff;
+  --green: #138567;
+  --orange: #ea7c2d;
+}
+body { background: var(--bg); }
+.subtitle, .card-sub, .muted { color: #65708a; }
+button { border-color: #dce2f1; }
+button:hover { border-color: #a5a0f5; background: #f0efff; }
+button:disabled { opacity: .46; }
+button.primary { background: #4f46e5; border-color: #4f46e5; box-shadow: 0 4px 10px #4f46e52b; }
+button.primary:hover { background: #4338ca; border-color: #4338ca; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid #7c6af0; }
+::selection { background: #d8d4ff; color: #28205e; }
+.sidebar { background: #171d3b; border-right-color: #293255; color: #edf0ff; }
+.brand { color: #fff; }
+.brand-mark { background: #6458ed; box-shadow: 0 5px 14px #070b2770; }
+.brand>span:last-child { color: #a89dff; }
+.side-caption { color: #9ba5ca; }
+.nav-btn { background: transparent; color: #b9c2e1; }
+.nav-btn:hover { background: #252d50; color: #fff; }
+.nav-btn.active { background: #574ae3; color: #fff; box-shadow: 0 4px 14px #0c10293b; }
+.nav-btn .badge { background: #7470e8; color: #fff; }
+.dataset-picker label { color: #bcc6e7; }
+.dataset-picker select { background: #252e50; border-color: #414d79; color: #fff; color-scheme: dark; }
+.dataset-picker small { color: #a1aed3; }
+.local-card { background: #222b4c; border-color: #3a456c; }
+.local-card .shield { color: #b8adff; }
+.local-card p, .sidebar .muted { color: #aab7da; }
+.sidebar .ghost { color: #bac5e7; }
+.sidebar .ghost:hover { background: #252d50; color: #fff; }
+.workspace { border-top-color: #343f63; }
+.avatar { background: #39326b; color: #ded7ff; }
+.dataset-mini { background: #252e50; border-color: #414d79; color: #dce3ff; }
+.topbar { background: #fffffff5; border-bottom-color: #d6ddf0; }
+.breadcrumb { color: #737e9b; }
+.breadcrumb strong { color: #323b66; }
+.heading h1 { color: #222c53; }
+.selection-pill { background: #f3f1ff; border-color: #d5cffb; color: #5145a6; }
+.selection-pill.selected { background: #e9e5ff; border-color: #a99beb; color: #4936ae; }
+.card, .metric, .dataset-stats, .prepare-join { border-color: #dce2f1; box-shadow: 0 3px 14px #263b6c07; }
+.card-head h2, .profile-detail h2, .prepare-stage-head h2 { color: #26325b; }
+.dataset-stats { background: #fff; border-left: 4px solid #6355e8; }
+.dataset-stats b { color: #4f46e5; font-size: 17px; }
+.dataset-stats span:nth-child(3) b { color: #c26420; }
+.dataset-stats span:nth-child(4) b { color: #9d46b0; }
+.badge { background: #eeebff; color: #5542bd; }
+.file-icon { background: #eeebff; color: #5542bd; }
+.metric { border-top: 3px solid #5c50df; }
+.metric:nth-child(2) { border-top-color: #0891b2; }
+.metric:nth-child(3) { border-top-color: #ea7c2d; }
+.metric:nth-child(4) { border-top-color: #a855f7; }
+.metric-title { color: #65708a; }
+.metric-value { color: #29345d; }
+.profile-list, .prepare-controls { background: #f4f5fc; }
+.profile-item.active { background: #eceaff; }
+.field-type { color: #5f52d5; background: #e7e3fc; }
+.profile-pick b { color: #303b61; }
+.profile-pick small { color: #737e99; }
+.profile-selection, .inline-stats, .change-counts, .chart-evidence { color: #69738e; }
+.inline-stats b, .profile-selection b, .change-counts b, .chart-evidence b { color: #4f46e5; }
+.chart svg text, .box-chart svg text, .analytic-svg text, .prepare-svg text { fill: #5f6b88; }
+.analytic-svg text[fill="white"] { fill: white; }
+.legend, .viz-legend, .card-sub, .viz-note, .chart-note, .prepare-viz-note { color: #65728e; }
+th { background: #f0f1fb; color: #58628c; }
+td { color: #4d5875; border-bottom-color: #e9edf6; }
+tbody tr:hover td { background: #f7f6ff; }
+.matrix tbody tr:hover td { background: revert; }
+.table-footer { color: #78839e; }
+.field label, .prepare-controls .field { color: #555f83; }
+input, select, .prepare-controls input, .prepare-controls select { border-color: #d9def0; color: #35416c; }
+input:focus, select:focus { border-color: #8276e9; }
+.search-box:focus-within { border-color: #8276e9; }
+.selection-bar { background: #eeebff; border-color: #d1c9fa; }
+.chip { border-color: #c8bcf5; color: #514298; }
+.selection-summary { color: #514298; }
+.facet-track i { background: #dce1f0; }
+.facet-track b { background: #4f46e5; }
+.facet-count { color: #62548b; }
+.facet-row:hover { background: #f3f0ff; }
+.complete-dot { color: #138567; }
+.segmented { background: #eeedf8; border-color: #d9d7ee; }
+.segmented button.selected { color: #4f46e5; }
+.chart-options, .chart-settings .chart-options, .explore-main>.chart-options { background: #f5f5fc; }
+.insight { background: #f0edff; color: #65569e; border-color: #dcd3f8; }
+.prepare-tab { color: #59648b; background: #fff; border-color: #d8def0; box-shadow: 0 2px 5px #27366706; }
+.prepare-tab:hover { background: #eae6ff; border-color: #b4a7f1; }
+.prepare-tab.active { background: #5546dc; border-color: #5546dc; color: #fff; box-shadow: 0 4px 12px #5546dc2b; }
+.prepare-tab:focus-visible { outline-color: #8c7beb; }
+.prepare-scope { background: #f3f2fc; color: #687196; }
+.prepare-controls input:disabled { background: #eaeef7; color: #8b93ad; }
+.prepare-control-note, .prepare-dedupe-count, .prepare-action-bar>span { color: #707c97; }
+.prepare-dedupe-count b { color: #5a49d8; }
+.code-tag { color: #7a7396; }
+.prepare-action-bar { background: #f8f7fe; }
+.prepare-type-summary { color: #65708a; }
+.prepare-type-summary b { color: #4f46e5; }
+#prepareStage h3 { color: #555080; }
+.formula-flow { background: #f0edff; border-color: #ded7fa; }
+.formula-flow span { color: #51477a; border-color: #ddd4f4; }
+.formula-flow strong { color: #4b35a5; background: #e4dcff; border-color: #b9a6f0; }
+.formula-flow>b { color: #9180b5; }
+.applied-badge { background: #e4f6ed; color: #247453; }
+.prepare-examples { border-color: #dce2f1; }
+.prepare-join>summary, .chart-settings summary { color: #60558e; }
+.preview-panel { border-color: #b7a7e9; }
+.chart-evidence b { font-weight: 700; }
+dialog { box-shadow: 0 24px 90px #10132e40; }
+dialog::backdrop { background: #141b3a70; }
+@media(min-width:761px) { #prepareStage { scrollbar-color: #bbb2e8 transparent; } }
