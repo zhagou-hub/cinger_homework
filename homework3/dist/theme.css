@@ -115,3 +115,9 @@ input:focus, select:focus { border-color: #8276e9; }
 dialog { box-shadow: 0 24px 90px #10132e40; }
 dialog::backdrop { background: #141b3a70; }
 @media(min-width:761px) { #prepareStage { scrollbar-color: #bbb2e8 transparent; } }
+.dataset-size { display: inline-flex; align-items: center; gap: 8px; padding: 6px 11px; border: 1px solid #dce2f1; border-radius: 8px; background: #f7f7fd; color: #5a6385; font-size: 12px; white-space: nowrap; }
+.dataset-size .icon { width: 16px; height: 16px; }
+.chart .bar, .chart .point, .chart .slice, .facet-row { cursor: default; }
+.chart .bar:hover, .chart .slice:hover { opacity: 1; }
+.facet-row:hover { background: transparent; }
+#scatterSvg { touch-action: auto; cursor: default; }

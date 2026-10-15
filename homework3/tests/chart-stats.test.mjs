@@ -29,9 +29,9 @@ test('drawing samples consist of original observations and preserve endpoints',(
  assert.equal(sample.length,300);assert.equal(sample[0],rows[0]);assert.equal(sample.at(-1),rows.at(-1));assert.ok(sample.every(r=>rows.includes(r)));
  assert.deepEqual(C.numericFields(rows,Object.keys(rows[0])),['x','y']);
 });
-test('new SVG plots handle constant values, missing groups and empty selections without invalid coordinates',()=>{
+test('SVG plots retain full-data observations and record inspection without filter actions',()=>{
  const rows=[{x:1,y:2,g:null,h:'A'},{x:1,y:2,g:'G',h:'B'},{x:null,y:2,g:'G',h:'A'}];
- const marks=[],v=createVisuals({t:(a)=>a,esc:s=>String(s??'').replace(/[<>"&]/g,''),label:k=>k,val:v=>v??'Missing',fmt:v=>v===null?'—':String(v),short:String,color:['#123456','#789abc'],mark:f=>{marks.push(f);return 'data-act="test"';},getRows:()=>rows});
+ const v=createVisuals({t:(a)=>a,esc:s=>String(s??'').replace(/[<>"&]/g,''),label:k=>k,val:v=>v??'Missing',fmt:v=>v===null?'—':String(v),short:String,color:['#123456','#789abc'],getRows:()=>rows});
  const html=[v.qualityMap(rows,['x','y']),v.qualityChange(rows,rows,['x','y'],['x','y']),v.groupBoxes(rows,'g','x'),v.stacked(rows,'g','h'),v.categoryHeatmap(rows,'g','h'),v.parallel(rows,rows,['x','y'],'g'),v.scatterMatrix(rows,['x','y'],'g'),v.scatterMatrix([],['x','y'],'g')].join('');
- assert.ok(!/NaN|Infinity|\[object Object\]/.test(html));assert.ok(marks.some(f=>f.filters?.length===2));assert.ok(html.includes('Missing'));assert.ok(!v.groupBoxes([],'g','x').includes('<svg'));
+ assert.ok(!/NaN|Infinity|\[object Object\]/.test(html));assert.ok(!html.includes('visualFilter'));assert.ok(html.includes('data-act="inspectRow"'));assert.ok(html.includes('Missing'));assert.ok(!v.groupBoxes([],'g','x').includes('<svg'));
 });
