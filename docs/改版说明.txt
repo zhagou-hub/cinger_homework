@@ -72,9 +72,9 @@
 
 五、当前交付状态
 
-本次课程改版源码提交至 zhagou-hub/cinger_homework 仓库的 homework4 分支，分支根目录为完整静态站点。现有其他作业分支及 Pages 设置保持不变。
+本次课程改版源码提交至 zhagou-hub/cinger_homework 仓库的 homework4 分支，GitHub Pages 从该分支根目录发布完整静态站点。现有其他作业分支的源码保持不变。
 
 源码分支：https://github.com/zhagou-hub/cinger_homework/tree/homework4
-网站访问链接：以仓库实际启用的静态托管地址为准，本次仅推送作业分支。
+网站访问链接：https://zhagou-hub.github.io/cinger_homework/
 演示录屏：尚未录制，可参考同目录“讲解提纲.txt”录制约 4 分钟的讲解。
 提交前应补齐网站链接、源码压缩包、讲解视频和本修改说明。网站页面中不嵌入讲解视频，以符合老师关于存储空间的要求。

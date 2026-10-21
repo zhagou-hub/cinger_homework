@@ -58,6 +58,8 @@ CSV 导入完全在浏览器内处理，最多 2 MB、5,000 行、100 列；UTF-
 
 ## 作业分支与运行
 
-本次课程改版源码保存在 [zhagou-hub/cinger_homework 的 homework4 分支](https://github.com/zhagou-hub/cinger_homework/tree/homework4)。分支根目录即完整静态站点，无需 npm 构建，使用相对路径支持子目录；`.nojekyll` 可供 GitHub Pages 直接提供静态文件。本次提交不修改其他作业分支或仓库既有的 Pages 设置。
+网站访问地址：[见数 · 可视化导论](https://zhagou-hub.github.io/cinger_homework/)。
+
+本次课程改版源码保存在 [zhagou-hub/cinger_homework 的 homework4 分支](https://github.com/zhagou-hub/cinger_homework/tree/homework4)。GitHub Pages 从 `homework4` 分支根目录发布完整静态站点，无需 npm 构建；`.nojekyll` 使站点文件直接作为静态资源提供。其他作业分支的源码保持不变。
 
 作业另外需要发布链接、源码压缩包、5 分钟以内且有讲解的录屏和修改说明。`docs/` 提供修改说明与约 4 分钟讲解提纲；提纲不等于已录制的视频。
