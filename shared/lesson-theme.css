@@ -1,0 +1,134 @@
+/* Shared reading theme. Chart fills and data encodings remain owned by each demo. */
+:root {
+  --reading-bg: #f7f8f2;
+  --reading-paper: #fffefa;
+  --reading-ink: #283d35;
+  --reading-muted: #647267;
+  --reading-green: #476c58;
+  --reading-pale: #edf2e8;
+  --reading-line: #dce3d7;
+  --reading-apricot: #cb865e;
+}
+html { scroll-padding-top: 88px; }
+body { color: var(--reading-ink); background: var(--reading-bg); font-size: 15px; line-height: 1.8; }
+a, button, input, select { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid var(--reading-apricot); outline-offset: 3px;
+}
+.course-topbar {
+  background: var(--reading-paper); border-color: var(--reading-line);
+  padding: 12px 28px; box-shadow: none; gap: 16px;
+}
+.course-topbar .brand, .course-topbar .brand:hover { background: var(--reading-pale); color: var(--reading-green); }
+.course-topbar ul.tabs { border: none; min-width: 0; max-width: 100%; overflow-x: auto; }
+.course-topbar ul.tabs a { color: var(--reading-muted); }
+.course-topbar ul.tabs a:hover { background: var(--reading-pale); color: var(--reading-ink); }
+.course-topbar ul.tabs a.current, .course-topbar ul.tabs a.current:hover { background: var(--reading-green); color: #fff; }
+.lang-switch { border-color: var(--reading-line); box-shadow: none; flex-shrink: 0; }
+.lang-switch button.active { background: var(--reading-green); }
+.lesson-header {
+  background: var(--reading-pale); color: var(--reading-ink);
+  border-bottom: 1px solid var(--reading-line); padding: 35px max(28px, calc((100vw - 1320px) / 2));
+  gap: 24px; flex-wrap: wrap;
+}
+.lesson-header h1 { font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.8px; font-weight: 650; }
+.subtitle, .header-tip { color: var(--reading-muted); }
+.kbd { background: #dae4d7; color: var(--reading-ink); border: 1px solid #c6d4c2; }
+.learning-bar {
+  max-width: 1320px; margin: 0 auto; padding: 18px 28px 0;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px;
+}
+.learning-home { color: var(--reading-green); text-decoration: none; font-size: 13px; }
+.learning-home:hover { text-decoration: underline; }
+.learning-status { margin-left: auto; font-size: 12px; color: var(--reading-muted); }
+.learning-complete {
+  appearance: none; border: 1px solid var(--reading-green); background: var(--reading-paper);
+  color: var(--reading-green); border-radius: 7px; padding: 9px 15px; cursor: pointer;
+  font-weight: 600; font-size: 13px; line-height: 1.5; font-family: inherit;
+}
+.learning-complete:hover { background: var(--reading-pale); }
+.learning-complete[aria-pressed="true"] { background: var(--reading-green); color: white; }
+.lesson-main { max-width: 1320px; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; padding: 24px 28px 40px; }
+.chapter-nav { top: 84px; background: transparent; border: none; padding: 12px 0; max-height: calc(100vh - 108px); overflow-y: auto; }
+.chapter-nav h3 { color: var(--reading-muted); font-size: 12px; padding: 0 12px; letter-spacing: 1px; }
+.chapter-nav a { color: #506052; border-radius: 0 7px 7px 0; padding: 10px 12px; line-height: 1.65; }
+.chapter-nav a:hover { background: var(--reading-pale); }
+.chapter-nav a.active { color: var(--reading-green); background: #e5eddf; border-left-color: var(--reading-green); }
+.chapter-nav .nav-tip { border-color: var(--reading-line); padding: 15px 10px 0; }
+.nav-tip a { color: var(--reading-green); }
+.chapter-content { min-width: 0; max-width: 100%; overflow-wrap: break-word; background: var(--reading-paper); border-color: var(--reading-line); border-radius: 12px; }
+.chapter { padding: 32px 36px 40px; scroll-margin-top: 85px; border-bottom: 1px solid var(--reading-line); }
+.chapter:last-child { border-bottom: none; }
+.chapter h2 { color: var(--reading-ink); font-size: 25px; }
+.chapter-subtitle { color: var(--reading-muted); line-height: 1.7; }
+.chapter .tabs { border-color: var(--reading-line); gap: 8px; }
+.tab-btn { font-size: 14px; padding: 11px 18px; color: var(--reading-muted); }
+.tab-btn:hover { color: var(--reading-ink); background: var(--reading-pale); }
+.tab-btn.active { color: var(--reading-green); border-bottom-color: var(--reading-green); font-weight: 650; }
+.tab-panel h3 { color: var(--reading-ink); font-size: 18px; margin-top: 28px; }
+.tab-panel p, .tab-panel li { color: #435247; }
+.tab-panel p { margin: 12px 0; }
+.tab-panel code { background: #eef1e8; color: #42634e; border: 1px solid #dce4d5; }
+.tab-panel pre, pre, .console { background: #edf1e8; color: #334d3d; border: 1px solid var(--reading-line); }
+.tab-panel pre code { background: transparent; border: 0; padding: 0; color: inherit; }
+.tab-panel pre code .cmt { color: #667560 !important; }
+.tab-panel pre code .kw, .tab-panel pre code .cls { color: #805a80 !important; }
+.tab-panel pre code .fn { color: #3d6754 !important; }
+.tab-panel pre code .str { color: #617529 !important; }
+.tab-panel pre code .num, .tab-panel pre code .op { color: #9b5b37 !important; }
+.tab-panel pre code .star { color: #8a681d !important; }
+.code-purpose { color: var(--reading-muted); border-left-color: #c4d2bc; }
+.key-point, .demo-hint { background: var(--reading-pale); color: #3b5944; border-left-color: #86a277; }
+.key-point strong { color: #35553e; }
+.note { background: #fcf1e4; border-left-color: var(--reading-apricot); color: #77563e; }
+.theory-table th, .theory-table td { border-color: var(--reading-line); }
+.theory-table th, .theory-table tr:nth-child(even) td { background: #f3f5ed; color: #435247; }
+.demo-mount { min-width: 0; max-width: 100%; background: #fafbf6; border-color: var(--reading-line); overflow-x: auto; scroll-margin-top: 92px; }
+.demo-sub, .demo-detail, .flow-detail { border-color: var(--reading-line); }
+.demo-btn, .demo-btn:hover { background: var(--reading-green); }
+.demo-btn.secondary { background: #7a8873; }
+.controls label, .demo-legend { color: var(--reading-muted); }
+.controls input, .controls select { border-color: #ccd8c5; color: #394e40; accent-color: var(--reading-green); }
+.lesson-footer { border-color: var(--reading-line); color: var(--reading-muted); }
+.chapter-pager a, .chapter-pager span { border-color: var(--reading-line); background: var(--reading-paper); }
+.chapter-pager .pager-title { color: var(--reading-ink); }
+.chapter-pager .pager-portal, .chapter-pager .pager-portal:hover, .chapter-pager a:hover { background: var(--reading-pale); color: var(--reading-green); border-color: #b6c8aa; }
+.chapter-pager a:hover .pager-title { color: var(--reading-green); }
+@media (max-width: 1000px) {
+  .course-topbar { flex-wrap: wrap; gap: 8px; padding: 9px 18px; }
+  .course-topbar ul.tabs { order: 3; flex-basis: 100%; }
+  .course-topbar .lang-switch { margin-left: auto; }
+  .chapter-nav { top: 116px; max-height: calc(100vh - 140px); }
+  html { scroll-padding-top: 130px; }
+  .chapter, .demo-mount { scroll-margin-top: 130px; }
+  .lesson-main { grid-template-columns: 200px minmax(0, 1fr); gap: 20px; }
+  .chapter { padding: 26px 24px; }
+}
+@media (max-width: 760px) {
+  .lesson-header { padding: 25px 20px; gap: 12px; }
+  .lesson-header h1 { font-size: 25px; }
+  .header-tip { font-size: 11px; }
+  .lesson-main { display: block; padding: 16px 14px 28px; }
+  .chapter-nav { position: static; max-height: none; padding: 0 0 18px; }
+  .chapter-nav h3 { padding-left: 2px; margin-bottom: 6px; }
+  .chapter-nav > ul { display: flex; min-width: 0; max-width: 100%; overflow-x: auto; gap: 6px; padding-bottom: 7px; }
+  .chapter-nav > ul > li { flex: 0 0 auto; }
+  .chapter-nav > ul > li > a { border: 1px solid var(--reading-line); border-radius: 6px; padding: 7px 10px; }
+  .chapter-nav > ul > li > a.active { border-color: var(--reading-green); }
+  .chapter-nav .nav-tip { display: flex; flex-wrap: wrap; gap: 8px 16px; padding: 8px 2px 0; margin-top: 4px; }
+  .chapter-nav .nav-tip br { display: none; }
+  .chapter-nav .nav-tip a { font-size: 11px; padding: 0; }
+  .chapter { padding: 22px 18px 28px; }
+  .chapter h2 { font-size: 21px; }
+  .tab-btn { padding: 10px 11px; font-size: 13px; }
+  .learning-bar { padding: 15px 18px 0; gap: 10px; }
+  .learning-status { flex-basis: 100%; order: 3; margin-left: 0; }
+  .learning-complete { margin-left: auto; }
+  .theory-table { display: block; overflow-x: auto; }
+  .demo-mount { padding: 12px; }
+  pre { font-size: 12px; padding: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tab-panel { animation: none; }
+}

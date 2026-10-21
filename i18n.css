@@ -1,10 +1,12 @@
 /* =============================================================
  * i18n.css — Language switcher styles (v2.0 · 2026-09-09)
- * 页面布局课程：中英文切换控件
+ * 共用样式：portal 主页 + supplementary + 5 个 lesson
  *
  * 设计原则：
  *   - .lang-switch 是唯一基类，统一样式
- *   - .lang-switch 内嵌在课程顶部导航右侧
+ *   - .lang-switch-floating 仅用于无 topbar 的页面（portal 主页 + supplementary），
+ *     把按钮钉在右上角
+ *   - 内嵌在 .course-topbar 内的版本继承基类样式，视觉与 floating 版一致
  * ============================================================= */
 
 /* --- 基类（所有页面共用）--- */
@@ -44,7 +46,7 @@
   color: #fff;
 }
 
-/* --- 可选浮动模式（无顶部导航时使用）--- */
+/* --- Portal 主页 / supplementary：无 topbar → 浮动钉右上角 --- */
 .lang-switch.lang-switch-floating {
   position: fixed;
   top: 16px;

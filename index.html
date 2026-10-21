@@ -1,58 +1,56 @@
-<!DOCTYPE html><html lang="zh-CN"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#136e64">
-  <meta name="description" content="智质图谱：人工智能驱动新质生产力的可视化探索。通过里程碑折线图、中心词云和任务思维导图认识人工智能。">
-  <title>认识新质 · 智质图谱</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23136e64'/%3E%3Ctext x='32' y='45' text-anchor='middle' fill='white' font-family='sans-serif' font-size='40'%3E谱%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./src/style.css">
-  <link rel="stylesheet" href="./src/layout.css">
-  <link rel="stylesheet" href="./src/columns.css">
-  <script type="module" src="./src/app.js"></script>
-  <script type="module" src="./src/ai-explorer.js"></script>
-<link rel="stylesheet" href="./src/reading.css">  <link rel="stylesheet" href="./src/principles.css">
-  <link rel="stylesheet" href="./src/intro.css">
-<link rel="stylesheet" href="./src/reading-theme.css"></head>
-<body data-page="understand" data-columns="true" data-scroll-sections="true" data-ai="true">
-
-  <a class="skip" href="#page-content">跳到可视化</a>
-  <header class="site-header">
-    <a class="brand" href="./index.html" aria-label="智质图谱，回到认识新质"><span class="brand-mark">谱</span><span>智质图谱<span class="brand-en">AI × PRODUCTIVITY ATLAS</span></span></a>
-    <button class="menu-toggle" aria-label="展开功能导航" aria-expanded="false" aria-controls="main-nav">功能 <span>☰</span></button>
-    <nav id="main-nav" aria-label="功能导航"><a href="./understand.html" data-page="understand" class="active" aria-current="page">认识新质</a><a href="./mechanism.html" data-page="mechanism">驱动机制</a><a href="./applications.html" data-page="applications">应用实践</a><a href="./people.html" data-page="people">人的位置</a><a href="./futures.html" data-page="futures">未来路径</a></nav>
-    <a class="header-source" href="./sources.html">数据与方法 <span>↗</span></a>
-  </header>
-  <main id="page-content" tabindex="-1">
-    <div class="page-toolbar wrap"><div class="page-title"><h1>认识新质</h1><p class="site-theme">人工智能驱动新质生产力的可视化探索</p></div><a class="page-source" href="./sources.html#ai-methods">数据与原理依据 ↗</a></div>
-    <section id="understand" class="section wrap column-section reading-layout">
-      <aside class="section-sidebar"><span class="sidebar-caption">认识新质 / 内容导航</span><nav aria-label="本页图表目录"><a href="#ai-history" data-section-link="history"><span>01</span>发展历程</a><a href="#ai-concepts" data-section-link="concepts"><span>02</span>概念解析</a><a href="#ai-tasks" data-section-link="tasks"><span>03</span>任务类别</a></nav><p class="sidebar-note">选择、观察与展开<br>沿三段图形继续阅读</p></aside>
-      <div class="reading-content">
-        <article id="ai-history" class="reading-section" data-reading-section="history" tabindex="-1">
-          <span class="section-number">01 / 发展历程</span>
-          <div class="column-heading"><div><h2>发展历程</h2><p>从行为检验到生成模型，沿九个重要节点认识人工智能的发展。点击节点，直接在图中阅读事件。</p></div><span class="column-tag">精选历史节点 · 1950—2024</span></div>
-          <div id="history-visual" class="ai-stage" data-visual="history" aria-label="发展历程交互图形"></div>
-        </article>
-
-        <article id="ai-concepts" class="reading-section" data-reading-section="concepts" tabindex="-1">
-          <span class="section-number">02 / 概念解析</span>
-          <div class="column-heading"><div><h2>概念解析</h2><p>以人工智能为中心，区分方法的包含关系与任务、应用的延伸关系。点击词语查看解释。</p></div><span class="column-tag">22 个概念 · 稳定导览</span></div>
-          <div id="concepts-visual" class="ai-stage" data-visual="concepts" aria-label="概念解析交互图形"></div>
-        </article>
-
-        <article id="ai-tasks" class="reading-section" data-reading-section="tasks" tabindex="-1">
-          <span class="section-number">03 / 任务类别</span>
-          <div class="column-heading"><div><h2>任务类别</h2><p>从目标与输出理解四类任务：识别、预测、生成与决策。沿分支查看典型输入和输出。</p></div><span class="column-tag">输入 → 任务 → 输出</span></div>
-          <div id="tasks-visual" class="ai-stage" data-visual="tasks" aria-label="任务类别交互图形"></div>
-        </article>
-        <p class="ai-next">模型以数值表示为输入，通过训练调整参数，并使用已学参数处理新样本。 <a href="./mechanism.html">进入驱动机制 →</a></p>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="可视化导论：五章课程、27个小节与交互实验。">
+  <meta name="theme-color" content="#f7f8f3">
+  <title>见数 · 可视化导论</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="shared/site-shell.css">
+  <link rel="stylesheet" href="landing.css">
+  <script defer src="shared/site-shell.js"></script>
+  <script defer src="portal.js"></script>
+  <script defer src="hero-scene.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+<div class="page-shell">
+<main id="main" class="landing-main">
+  <section class="landing-hero" aria-labelledby="course-title">
+    <div class="hero-scene" aria-hidden="true"><div class="scene-fallback"></div><canvas id="hero-canvas"></canvas></div>
+    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="landing-hero-inner">
+      <div class="landing-kicker"><span></span> INTRODUCTION TO VISUALIZATION</div>
+      <h1 id="course-title">可视化导论 <span>课程学习平台</span></h1>
+      <p class="landing-description">数据处理、视觉编码与时序分析。<br>课程讲解、代码示例与交互实验的综合学习平台。</p>
+      <div class="landing-actions"><a class="landing-button solid" href="#chapters">浏览课程章节 <span aria-hidden="true">↓</span></a><a class="landing-button outline" href="lab/">进入交互实验室 <span aria-hidden="true">↗</span></a></div>
+      <div class="landing-facts"><span><b>05</b> 课程章节</span><span><b>27</b> 知识小节</span><span><b>03</b> 交互实验</span></div>
+    </div>
+    <div class="scene-caption"><span class="scene-dot"></span> 三维生成曲面 <span class="caption-divider">/</span> 动态交互背景</div>
+    <div class="hero-scene-controls"><button type="button" id="scene-motion" aria-pressed="false">暂停动画 <span aria-hidden="true">Ⅱ</span></button></div>
+    <a class="hero-scroll" href="#chapters"><span aria-hidden="true">↓</span> 课程内容</a>
+  </section>
+      <section id="chapters" class="chapters-section landing-section" aria-labelledby="chapters-title">
+        <div class="section-heading"><div><span class="eyebrow">COURSE CHAPTERS</span><h2 id="chapters-title">课程章节<span id="result-count">5 个章节</span></h2></div><label class="search-box"><span aria-hidden="true">⌕</span><input id="chapter-search" type="search" placeholder="搜索章节、知识点…" aria-label="搜索章节或知识点"><kbd>/</kbd></label></div>
+      <div id="learning-path" class="learning-path" aria-labelledby="path-title">
+        <div class="path-intro"><span class="eyebrow">COURSE LEARNING PATH</span><h2 id="path-title">课程学习路径</h2></div>
+        <ol class="path-steps">
+          <li><a href="lesson-01/"><span>01</span><strong>数据基础</strong><small>数据属性与数据变换</small></a></li>
+          <li><a href="lesson-02/"><span>02</span><strong>可视化流程</strong><small>数据处理与视图构建</small></a></li>
+          <li><a href="lesson-03/"><span>03</span><strong>色彩表达</strong><small>颜色空间与色带映射</small></a></li>
+          <li><a href="lesson-04/"><span>04</span><strong>低维可视化</strong><small>坐标、曲线与等值线</small></a></li>
+          <li><a href="lesson-05/"><span>05</span><strong>时序可视化</strong><small>时间序列与周期模式</small></a></li>
+        </ol>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer wrap"><span>智质图谱 · 人工智能驱动新质生产力的可视化探索</span><span>精选 AI 历史：1950—2024</span><a href="./sources.html">数据与方法 ↗</a></footer>
-  <dialog id="source-dialog" aria-labelledby="source-dialog-title"><button class="dialog-close" aria-label="关闭来源说明">×</button><div id="source-dialog-content"></div></dialog>
-  <div class="toast" role="status" aria-live="polite" hidden=""></div>
-  <noscript><div class="noscript">交互图表需要启用 JavaScript。<a href="./sources.html">查看数据与方法</a>。</div></noscript>
-
-
-</body></html>
+        <div class="landing-progress"><span>学习进度 <strong id="progress-number">0 / 5</strong></span><progress id="course-progress" value="0" max="5" aria-label="已完成章节">0 / 5</progress><p id="progress-note" class="sr-only">学习进度依据章节完成标记记录。</p><a id="continue-link" href="lesson-01/">开始学习 ↗</a></div>
+        <div class="filter-row" aria-label="按主题筛选"><button type="button" class="active" data-filter="all" aria-pressed="true">全部章节</button><button type="button" data-filter="foundation" aria-pressed="false">数据与流程</button><button type="button" data-filter="visual" aria-pressed="false">视觉表达</button><button type="button" data-filter="time" aria-pressed="false">时序探索</button></div>
+        <div id="chapter-grid" class="chapter-grid"></div>
+        <div id="no-results" class="no-results" hidden><strong>未找到匹配章节</strong><p>支持按「颜色」「D3」「时间」等关键词检索，可清除筛选条件后重新搜索。</p><button id="reset-search" class="button secondary" type="button">显示全部章节</button></div>
+        <p id="search-announcement" class="sr-only" aria-live="polite"></p>
+      </section>
+</main>
+<footer><div><strong>见数</strong><span>《可视化导论》课程重构作业</span></div><p>原课程：中国石油大学（华东）· 李昕老师<br>主要参考教材：陈为《可视化导论》 · <a href="https://github.com/cinger007/vis" target="_blank" rel="noopener">原始源码 ↗</a></p><a href="#main">回到顶部 ↑</a></footer>
+</div>
+</body>
+</html>

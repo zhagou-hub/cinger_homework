@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="支持多数据、分析任务、联动框选和图形对照的数据可视化实验室。">
+  <title>交互实验室 · 可视化导论</title>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="../shared/site-shell.css">
+  <script defer src="../vendor/d3.min.js"></script><script defer src="../shared/site-shell.js"></script>
+  <script defer src="data.js"></script><script defer src="charts.js"></script><script defer src="lab.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到实验内容</a>
+<main id="main">
+  <section class="intro"><div><p class="eyebrow">VISUAL ANALYTICS STUDIO</p><h1>交互实验室</h1><p class="intro-text">从数据选择到分析验证，在联动视图中探索、比较与记录。</p></div><div class="studio-badge"><span class="live-dot"></span> 本地分析 <small>03 数据集 / 07 图形</small></div></section>
+  <div class="experiment-tabs" role="tablist" aria-label="选择实验">
+    <button role="tab" id="tab-explore" aria-controls="panel-explore" aria-selected="true" tabindex="0" data-tab="explore"><span>01</span> 数据分析 <small>多数据与联动探索</small></button>
+    <button role="tab" id="tab-encoding" aria-controls="panel-encoding" aria-selected="false" tabindex="-1" data-tab="encoding"><span>02</span> 图形对照 <small>同一数据的不同表达</small></button>
+    <button role="tab" id="tab-color" aria-controls="panel-color" aria-selected="false" tabindex="-1" data-tab="color"><span>03</span> 色彩实验 <small>语义映射与灰度检查</small></button>
+  </div>
+  <section id="data-zone" aria-labelledby="dataset-title">
+    <div class="section-label"><h2 id="dataset-title">选择实验数据</h2><label class="import-button" for="csv-upload">＋ 导入 CSV<input type="file" id="csv-upload" accept=".csv,text/csv"></label></div>
+    <div class="dataset-grid" role="group" aria-label="实验数据集">
+      <button type="button" class="dataset-card" data-dataset="students" aria-pressed="true"><span class="dataset-icon">◈</span><span><strong>新生数据</strong><small>80 条 · 分组与分布</small></span><span class="dataset-index">01</span></button>
+      <button type="button" class="dataset-card" data-dataset="weather" aria-pressed="false"><span class="dataset-icon">◌</span><span><strong>全年天气</strong><small>366 条 · 趋势与周期</small></span><span class="dataset-index">02</span></button>
+      <button type="button" class="dataset-card" data-dataset="states" aria-pressed="false"><span class="dataset-icon">⤢</span><span><strong>州级统计</strong><small>50 条 · 关系与标准化</small></span><span class="dataset-index">03</span></button>
+      <button type="button" class="dataset-card custom-card" data-dataset="custom" aria-pressed="false" hidden><span class="dataset-icon">⊞</span><span><strong id="custom-name">自定义数据</strong><small id="custom-count"></small></span><span class="dataset-index">CSV</span></button>
+    </div>
+    <div class="source-row"><p id="dataset-source">正在读取课程数据…</p><a id="source-file" href="../lesson-01/data/newstudent.csv">源数据 ↗</a></div>
+    <p class="import-help">CSV 在浏览器内处理；支持 UTF-8、逗号分隔和 YYYY-MM-DD 日期，最多 2 MB / 5,000 行 / 100 列。空数值不计入统计。</p>
+    <div id="data-status" role="status" class="status" aria-live="polite"></div><button id="retry-data" type="button" class="quiet-button" hidden>重新加载</button>
+  </section>
+
+  <section id="panel-explore" class="experiment-panel" role="tabpanel" aria-labelledby="tab-explore" tabindex="0">
+    <div class="panel-heading" id="explore"><div><p class="eyebrow">01 / DATA ANALYSIS</p><h2>数据分析工作台</h2></div><span class="micro-note">选择任务 → 配置字段 → 操作图形</span></div>
+    <fieldset id="analysis-controls" class="analysis-controls" disabled><legend class="sr-only">分析配置</legend>
+      <div class="control-grid">
+        <label>分析任务<select id="analysis-task"><option value="compare">分组比较</option><option value="distribution">数值分布</option><option value="relationship">相关关系</option><option value="trend">时间趋势</option></select></label>
+        <label id="group-control">分组字段<select id="group-field"></select></label>
+        <label id="metric-control">数值字段<select id="metric-field"></select></label>
+        <label id="aggregation-control">统计方式<select id="aggregation"><option value="count">记录数</option><option value="mean">平均值</option><option value="sum">总和</option></select></label>
+        <label id="x-control" hidden>横轴字段<select id="x-field"></select></label>
+        <label id="y-control" hidden>纵轴字段<select id="y-field"></select></label>
+        <label id="date-control" hidden>时间字段<select id="date-field"></select></label>
+        <label id="bins-control" hidden>分箱数量<select id="bin-count"><option value="8">8 个目标分箱</option><option value="12">12 个目标分箱</option><option value="20">20 个目标分箱</option></select></label>
+        <label id="sort-control">排列方式<select id="sort-order"><option value="desc">数值降序</option><option value="asc">数值升序</option><option value="name">类别顺序</option></select></label>
+      </div>
+      <div class="filter-line"><span class="filter-label">样本范围</span><label class="sr-only" for="filter-field">筛选字段</label><select id="filter-field"></select><label class="sr-only" for="filter-value">筛选值</label><select id="filter-value"></select><button id="add-filter" type="button" class="text-button" disabled>添加条件 ＋</button><button id="reset-filters" type="button" class="text-button">重置筛选 ↺</button><span id="scope-count"></span></div>
+      <div id="active-filters" class="active-filters" aria-label="已添加的筛选条件"></div>
+      <div class="chart-picker" role="group" aria-label="可视化图形"><button type="button" data-chart="bar" aria-pressed="true">▥ 柱状图</button><button type="button" data-chart="dot" aria-pressed="false">⦿ 圆点图</button><button type="button" data-chart="histogram" aria-pressed="false">▤ 直方图</button><button type="button" data-chart="box" aria-pressed="false">⊞ 箱线图</button><button type="button" data-chart="scatter" aria-pressed="false">⠿ 散点图</button><button type="button" data-chart="line" aria-pressed="false">⌁ 折线图</button><button type="button" data-chart="heatmap" aria-pressed="false">▦ 日历热图</button></div>
+      <p id="chart-guidance" class="control-note"></p>
+    </fieldset>
+    <div class="studio-grid">
+      <article class="chart-card">
+        <div class="chart-heading"><div><span id="chart-eyebrow" class="eyebrow">LIVE VIEW</span><h3 id="chart-title">分析视图</h3></div><button id="export-svg" type="button" class="quiet-button" disabled>导出 SVG ↗</button></div>
+        <div class="chart-options"><label id="fit-control" hidden><input type="checkbox" id="show-fit" checked> 显示线性拟合</label><label id="smooth-control" hidden><input type="checkbox" id="show-smooth" checked> 7 个观测日移动平均</label><label id="normalization-control" hidden><input type="checkbox" id="normalize-rate"> 纵轴换算为每十万人</label></div>
+        <div id="analysis-chart" class="chart-stage"><div class="chart-placeholder">正在准备数据…</div></div>
+        <div class="selection-line"><span id="selection-label">点击图形可选择关联记录</span><button id="clear-selection" type="button" class="text-button" hidden>清除选择 ×</button></div>
+        <p id="chart-caption" class="chart-caption"></p>
+      </article>
+      <aside class="analysis-aside">
+        <section class="insight-card"><div class="section-label"><h3>统计摘要</h3><span id="stats-scope" class="tiny-badge">全部范围</span></div><div id="stat-grid" class="stat-grid"></div><p id="analysis-insight" class="insight-text" aria-live="polite"></p><p id="analysis-method" class="method-note"></p></section>
+        <section class="mission-card"><p class="eyebrow">PREDICT & VERIFY</p><h3>探索任务</h3><p id="mission-question"></p><div class="mission-answer"><label class="sr-only" for="mission-answer">你的预测</label><select id="mission-answer"></select><button id="check-mission" type="button" class="solid-button">验证</button></div><p id="mission-feedback" aria-live="polite"></p><button id="load-mission" type="button" class="text-button">载入对应分析 →</button></section>
+      </aside>
+    </div>
+    <details id="data-details" class="data-details"><summary><span>关联数据明细</span><span id="table-count"></span></summary><div class="table-actions"><p id="table-note"></p><button id="export-csv" type="button" class="quiet-button" disabled>导出当前记录 CSV ↗</button></div><div class="table-scroll"><table id="data-table"><caption class="sr-only">当前筛选或图形选择的原始记录</caption><thead></thead><tbody></tbody></table></div></details>
+    <section class="record-section"><div class="section-label"><div><h3>实验记录</h3><p>把当前配置、统计结果和自己的解释一起留下。本次会话最多保存 6 条。</p></div><button id="export-notes" type="button" class="quiet-button" disabled>导出实验记录 ↗</button></div><div class="record-editor"><label class="sr-only" for="experiment-note">观察与解释</label><input id="experiment-note" type="text" maxlength="500" placeholder="写下观察：哪种图形更容易比较？改变筛选后结果如何变化？"><button id="save-record" type="button" class="solid-button" disabled>记录当前实验 ＋</button></div><div id="record-list" class="record-list"><p class="empty-note">尚无实验记录。记录会包含数据来源、分析配置与统计摘要。</p></div></section>
+    <nav class="lab-knowledge" aria-label="相关课程知识点"><span>相关知识点</span><a href="../lesson-01/#ch-1-3">数据属性</a><a href="../lesson-02/#ch-2-2">分组聚合</a><a href="../lesson-04/#ch-4-2">比例尺</a><a href="../lesson-04/#ch-4-3">拟合分析</a><a href="../lesson-05/">时序可视化</a></nav>
+  </section>
+
+  <section id="panel-encoding" class="experiment-panel" role="tabpanel" aria-labelledby="tab-encoding" tabindex="0" hidden>
+    <div class="panel-heading" id="encoding"><div><p class="eyebrow">02 / CONTROLLED COMPARISON</p><h2>同一数据的图形对照</h2><p>两侧共享数据、字段与样本范围，按分析任务比较不同图形表达。</p></div><button id="edit-analysis" type="button" class="quiet-button">调整分析配置 →</button></div>
+    <div class="comparison-context"><span id="comparison-context"></span><p id="comparison-tip"></p></div>
+    <div class="comparison-grid"><article class="chart-card"><div class="compare-head"><h3>视图 A</h3><label class="sr-only" for="compare-a">视图 A 图形</label><select id="compare-a"></select></div><div id="comparison-a" class="chart-stage"></div><p id="compare-caption-a" class="chart-caption"></p></article><article class="chart-card"><div class="compare-head"><h3>视图 B</h3><label class="sr-only" for="compare-b">视图 B 图形</label><select id="compare-b"></select></div><div id="comparison-b" class="chart-stage"></div><p id="compare-caption-b" class="chart-caption"></p></article></div>
+    <div class="takeaway"><h3>对照观察</h3><p id="comparison-question"></p><p>同一数据改变图形，并不会增加证据。请同时观察图形的比较基准、聚合程度和被隐藏的细节。</p></div>
+    <nav class="lab-knowledge" aria-label="相关课程知识点"><span>相关知识点</span><a href="../lesson-02/#ch-2-3">图元与视觉通道</a><a href="../lesson-04/#ch-4-4">视觉感知与图形比较</a></nav>
+  </section>
+
+  <section id="panel-color" class="experiment-panel" role="tabpanel" aria-labelledby="tab-color" tabindex="0" hidden>
+    <div class="panel-heading" id="color"><div><p class="eyebrow">03 / COLOR & ACCESSIBILITY</p><h2>数据类型与色带映射</h2><p>使用固定示例，检查色彩含义与灰度条件下的信息可读性。</p></div><a class="lesson-link" href="../lesson-03/">第 3 章：色彩专题 ↗</a></div>
+    <div class="color-workspace"><aside class="color-controls"><label>映射方式<select id="color-mode"><option value="sequential">顺序型 · 有序数值</option><option value="diverging">发散型 · 基准偏差</option><option value="categorical">定性型 · 无序类别</option></select></label><label class="checkbox-label"><input type="checkbox" id="grayscale-check"> 灰度预览</label><label class="checkbox-label"><input type="checkbox" id="color-labels" checked> 保留数值 / 类别标签</label><h3 id="color-rule-title"></h3><p id="color-rule"></p><p class="method-note">本实验使用固定构造的 4 × 6 矩阵，非真实学习记录。灰度预览用于检查明暗可读性，不等同于色觉缺陷模拟。</p></aside><article class="chart-card"><div class="chart-heading"><h3 id="color-title"></h3><span class="tiny-badge">4 组 × 6 次观测</span></div><div id="color-chart" class="chart-stage"></div><div id="color-legend" class="color-legend"></div><p id="color-summary" class="chart-caption"></p></article></div>
+    <div class="takeaway"><h3>可读性检查</h3><p>打开灰度预览并隐藏标签，比较三类映射。无序类别依赖色相区分，保留文字或形状可减少仅靠颜色带来的识别困难。</p></div>
+    <nav class="lab-knowledge" aria-label="相关课程知识点"><span>相关知识点</span><a href="../lesson-03/#ch-3-1">颜色空间</a><a href="../lesson-03/#ch-3-2">三类色带</a><a href="../lesson-03/#ch-3-8">色觉友好设计</a></nav>
+  </section>
+</main>
+<footer><span>可视化导论 · 交互实验室</span><a href="https://cinger007.github.io/vis/" target="_blank" rel="noopener">原课程网站 ↗</a></footer>
+</body></html>
