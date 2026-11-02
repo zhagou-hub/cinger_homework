@@ -1,5 +1,5 @@
 /* =========================================================
-   案例包导入 Case Import（v2：多文件 / 文件夹）
+   案例包导入 Case Import（v3：多文件 / 文件夹 / ZIP）
    ---------------------------------------------------------
    一个「案例包」= 一个文件夹，最少一个清单，其余随便：
 
@@ -842,7 +842,7 @@
       '<div class="mdl-b">' +
       '<ol class="imp-flow">' +
       '<li><b>01</b><span>下载模板，改内容与示范</span></li>' +
-      '<li><b>02</b><span>拖入整个案例文件夹</span></li>' +
+      '<li><b>02</b><span>选择文件夹或 ZIP 压缩包</span></li>' +
       '<li><b>03</b><span>校验通过后添加</span></li>' +
       '</ol>' +
 
@@ -852,12 +852,14 @@
       '<div class="imp-drop" id="imp-drop">' +
       '<input type="file" id="imp-file" multiple hidden>' +
       '<input type="file" id="imp-dir" webkitdirectory directory multiple hidden>' +
+      '<input type="file" id="imp-zip" accept=".zip,application/zip,application/x-zip-compressed" hidden>' +
       '<span class="imp-ic">↑</span>' +
-      '<b>拖入案例文件夹，或点击选择</b>' +
-      '<span class="imp-sub">清单 case.json + 示范页 + 脚本 + 素材，上限 6 MB。推荐把整个文件夹<b>直接拖进虚线框</b>；若点按钮弹出的仍是文件选择框（浏览器不支持选文件夹），可点「选择文件」后 Ctrl+A 全选包内文件</span>' +
+      '<b>拖入案例文件夹或 ZIP 压缩包</b>' +
+      '<span class="imp-sub">包含 case.json、示范页、脚本和素材。ZIP 无需手动解压，浏览器会保留目录结构并逐项校验。每次导入一个案例，解压后总量不超过 6 MB。</span>' +
       '<span class="imp-choose">' +
       '<button class="btn sm" id="imp-pick-files" type="button">选择文件</button>' +
       '<button class="btn sm ghost" id="imp-pick-dir" type="button">选择文件夹</button>' +
+      '<button class="btn sm primary" id="imp-pick-zip" type="button">选择 ZIP 压缩包</button>' +
       '</span>' +
       '</div>' +
 
@@ -926,12 +928,14 @@
   function paintResults(list) {
     var res = q('#imp-res'), cnt = q('#imp-count');
     if (!list.length) {
+      q('#imp-ok').disabled = true;
       res.innerHTML = '<div class="imp-empty">把案例文件夹拖进来后，这里会逐项显示检查结果。<br>只有 0 项错误才能添加。</div>';
       cnt.textContent = '未开始';
       cnt.className = 'mono';
       return;
     }
     var sum = summarize(list);
+    q('#imp-ok').disabled = S.loading || !S.pkg || sum.errors > 0;
     res.innerHTML = list.map(function (x) {
       var icon = x.level === 'ok' ? '✓' : x.level === 'warn' ? '!' : '✕';
       return '<div class="imp-item" data-lv="' + x.level + '">' +
@@ -1011,14 +1015,30 @@
     S.loading = true;
     tip('正在读取 ' + files.length + ' 个文件…', '');
 
-    Promise.all(files.map(readOne)).then(function (arrs) {
+    q('#imp-ok').disabled = true;
+    q('#imp-try').disabled = true;
+    var archives = files.filter(function (f) { return /\.zip$/i.test(f.name); });
+    var expanded = Promise.resolve(files);
+    if (archives.length) {
+      tip('正在解压并校验 ZIP 压缩包…', '');
+      expanded = files.length !== 1
+        ? Promise.reject(new Error('每次请选择一个 ZIP 压缩包，不要与其他文件混选。'))
+        : global.CaseZip.read(archives[0], { maxTotal: MAX_TOTAL });
+    }
+    expanded.then(function (items) {
+      var size = items.reduce(function (sum, f) { return sum + f.size; }, 0);
+      if (size > MAX_TOTAL) throw new Error('案例文件总量超过 6 MB。');
+      return Promise.all(items.map(readOne));
+    }).then(function (arrs) {
       S.loading = false;
       stripRoot(arrs);
       adopt(arrs);
     }).catch(function (e) {
       S.loading = false;
+      S.pkg = null; S.manifest = null; S.files = []; S.raw = [];
+      paintFiles();
       paintResults([{ level: 'error', msg: '读取文件失败', hint: e.message }]);
-      tip('读取失败，换一个文件夹再试', 'is-err');
+      tip(e.message || '读取失败，请检查案例文件夹或 ZIP 压缩包', 'is-err');
     });
   }
 
@@ -1161,6 +1181,7 @@
 
   /* ---- 提交 ---- */
   function commit() {
+    if (S.loading) return;
     var meta = metaNow();
     var list = checkAll(S.pkg, meta, S.files);
     paintResults(list);
@@ -1195,7 +1216,7 @@
       if (e.target.closest('[data-close]')) { close(); }
     });
 
-    var drop = q('#imp-drop'), fileIn = q('#imp-file'), dirIn = q('#imp-dir');
+    var drop = q('#imp-drop'), fileIn = q('#imp-file'), dirIn = q('#imp-dir'), zipIn = q('#imp-zip');
 
     /* 有些环境（国产浏览器兼容模式等）解析 innerHTML 时会丢非标准属性，
        或压根不支持 webkitdirectory —— 弹出的仍是普通文件框。这里补一次属性，
@@ -1268,6 +1289,7 @@
        双保险：① 输入框层面拦截冒泡；② 虚线框只响应真实用户点击。 */
     fileIn.addEventListener('click', function (e) { e.stopPropagation(); });
     dirIn.addEventListener('click', function (e) { e.stopPropagation(); });
+    zipIn.addEventListener('click', function (e) { e.stopPropagation(); });
     drop.addEventListener('click', function (e) {
       if (!e.isTrusted) return;
       if (e.target.closest('.btn')) return;
@@ -1276,9 +1298,11 @@
     });
     q('#imp-pick-files').addEventListener('click', function (e) { e.stopPropagation(); fileIn.click(); });
     q('#imp-pick-dir').addEventListener('click', function (e) { e.stopPropagation(); pickDir(); });
+    q('#imp-pick-zip').addEventListener('click', function (e) { e.stopPropagation(); zipIn.click(); });
 
     fileIn.addEventListener('change', function () { loadFiles(fileIn.files); fileIn.value = ''; });
     dirIn.addEventListener('change', function () { loadFiles(dirIn.files); dirIn.value = ''; });
+    zipIn.addEventListener('change', function () { loadFiles(zipIn.files); zipIn.value = ''; });
 
     ['dragenter', 'dragover'].forEach(function (ev) {
       drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('on'); });
