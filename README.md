@@ -60,6 +60,8 @@ CSV 导入完全在浏览器内处理，最多 2 MB、5,000 行、100 列；UTF-
 
 网站访问地址：[见数 · 可视化导论](https://zhagou-hub.github.io/cinger_homework/)。
 
-本次课程改版源码保存在 [zhagou-hub/cinger_homework 的 homework4 分支](https://github.com/zhagou-hub/cinger_homework/tree/homework4)。GitHub Pages 从 `homework4` 分支根目录发布完整静态站点，无需 npm 构建；`.nojekyll` 使站点文件直接作为静态资源提供。其他作业分支的源码保持不变。
+本次课程改版源码保存在 [zhagou-hub/cinger_homework 的 homework4 分支](https://github.com/zhagou-hub/cinger_homework/tree/homework4)。当前 `bighomework` 分支保留该课程网站，并在 `bighomework/` 子目录新增石油勘探开发大作业。GitHub Pages 从 `bighomework` 分支根目录发布完整静态站点，无需 npm 构建；`.nojekyll` 使站点文件直接作为静态资源提供。其他作业分支的源码保持不变。
+
+石油勘探开发大作业访问地址：[智能化可能性地图（含 16 个可运行案例）](https://zhagou-hub.github.io/cinger_homework/bighomework/)。
 
 作业另外需要发布链接、源码压缩包、5 分钟以内且有讲解的录屏和修改说明。`docs/` 提供修改说明与约 4 分钟讲解提纲；提纲不等于已录制的视频。

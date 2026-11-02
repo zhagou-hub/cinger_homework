@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地震炮集初至波自动拾取与空间一致性约束</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div class="app">
+  <!-- 顶栏：仅标题与实时状态胶囊，无副标题 -->
+  <header class="topbar">
+    <h1>地震炮集初至波自动拾取与空间一致性约束</h1>
+    <div class="sp"></div>
+    <span class="pill acc" id="pill-vel"><i></i><span id="pill-vel-txt">反演 v₀=750 m/s · v₁=2100 m/s</span></span>
+    <span class="pill ok" id="pill-status"><i></i><span id="pill-status-txt">命中率 95.8% · 空间约束已生效</span></span>
+  </header>
+
+  <!-- 5 步流程步进条 -->
+  <nav class="stepper" id="stepper" aria-label="案例流程步骤">
+    <button type="button" data-step="0" class="done">
+      <span class="n">STEP 01</span>
+      <span class="t">道集解编与带通滤波预处理</span>
+    </button>
+    <button type="button" data-step="1" class="done">
+      <span class="n">STEP 02</span>
+      <span class="t">逐道 STA/LTA 与深度学习概率扫描</span>
+    </button>
+    <button type="button" data-step="2" class="done">
+      <span class="n">STEP 03</span>
+      <span class="t">AIC 局部极小值初至精修</span>
+    </button>
+    <button type="button" data-step="3" class="done">
+      <span class="n">STEP 04</span>
+      <span class="t">炮集走时曲线空间一致性回退</span>
+    </button>
+    <button type="button" data-step="4" class="on">
+      <span class="n">STEP 05</span>
+      <span class="t">低置信度道排序与人工复核验收</span>
+    </button>
+  </nav>
+
+  <!-- 主工作台 -->
+  <div class="bench">
+    <!-- 左侧控制栏 -->
+    <aside class="rail">
+      <div class="card">
+        <div class="card-h">
+          <span>拾取算法与特征算子</span>
+          <span class="sp"></span>
+          <span class="hint">单道算子</span>
+        </div>
+        <div class="card-b">
+          <div class="seg seg-col" id="method-seg">
+            <button type="button" data-method="stalta">
+              <span>STA/LTA 能量比</span>
+              <small>阈值触发</small>
+            </button>
+            <button type="button" data-method="aic" class="on">
+              <span>STA/LTA + AIC 精修</span>
+              <small>起跳极小值</small>
+            </button>
+            <button type="button" data-method="unet">
+              <span>1D 卷积概率峰</span>
+              <small>PhaseNet 风格</small>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span>观测噪声与窗长阈值</span>
+          <span class="sp"></span>
+          <span class="hint">实时重算</span>
+        </div>
+        <div class="card-b">
+          <div class="ctl">
+            <div class="ctl-l">
+              <span>背景与突发噪声水平</span>
+              <output id="out-noise">1.10</output>
+            </div>
+            <input type="range" id="sl-noise" min="0.2" max="2.8" step="0.05" value="1.10">
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-l">
+              <span>触发阈值 (Threshold)</span>
+              <output id="out-thr">3.2</output>
+            </div>
+            <input type="range" id="sl-thr" min="1.5" max="7.5" step="0.1" value="3.2">
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-l">
+              <span>短窗长度 STA (采样点)</span>
+              <output id="out-sta">8 点 (16ms)</output>
+            </div>
+            <input type="range" id="sl-sta" min="4" max="20" step="1" value="8">
+          </div>
+
+          <div class="divider"></div>
+
+          <label class="check">
+            <input type="checkbox" id="chk-spatial" checked>
+            <span>启用炮集空间走时一致性约束</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="chk-va" checked>
+            <span>叠加正半周变面积填充 (Wiggle+VA)</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="chk-qc" checked>
+            <span>高亮需人工复核的低置信度道</span>
+          </label>
+
+          <div class="btn-row">
+            <button type="button" class="btn primary" id="btn-demo">异常噪声冲击</button>
+            <button type="button" class="btn" id="btn-reset">重置标准工况</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span>单道显微镜选道 (#1–#24)</span>
+          <span class="sp"></span>
+          <span class="hint">点击切换</span>
+        </div>
+        <div class="card-b">
+          <div class="small muted">橙色为突发脉冲干扰道 (#7/#14/#21)，点击道号或直接在右侧剖面点击波形：</div>
+          <div class="trace-pills" id="trace-pills"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧主舞台 -->
+    <main class="stage">
+      <!-- 主视图：24 道单炮变面积波形剖面 -->
+      <section class="view" id="shot-view">
+        <div class="view-h">
+          <span>单炮 24 道地震记录剖面 (Shot Gather · 偏移距 50m–1200m · 采样率 Δt=2ms)</span>
+          <span class="sp"></span>
+          <span class="badge-mini acc" id="step-badge">当前展示：全流程走时约束与复核标记</span>
+          <span class="badge-mini warn" id="sel-badge">当前检视：第 #14 道 (x=700m)</span>
+        </div>
+        <svg id="svg-shot" class="shot-svg" viewBox="0 0 860 390" role="img" aria-label="24道地震单炮道集与初至波走时曲线"></svg>
+        <div class="tip" id="shot-tip"></div>
+        <div class="view-f">
+          <div class="legend">
+            <span><i class="dash" style="color:#2f7d5b"></i>真值初至走时 (v₀=750, v₁=2100 m/s)</span>
+            <span><i class="line" style="background:#c27a2c"></i>单道原始拾取点 (含脉冲误触发)</span>
+            <span><i class="line" style="background:#12615a;height:3px"></i>空间一致性约束走时曲线</span>
+            <span><i style="background:rgba(180,72,60,.22);border:1px solid #b4483c"></i>低置信度待人工复核道</span>
+            <span><i style="background:rgba(58,110,165,.18);border:1px dashed #3a6ea5"></i>面波低频干扰锥 (Ground Roll)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 个实时 KPI -->
+      <section class="kpis">
+        <div class="kpi ok" id="kpi-hit">
+          <div class="k">全炮命中率 (误差 ≤4ms)</div>
+          <div class="v"><span id="val-hit">95.8</span><small>%</small></div>
+          <div class="d" id="sub-hit">单道原始命中率 79.2%</div>
+        </div>
+        <div class="kpi acc" id="kpi-mae">
+          <div class="k">平均绝对误差 MAE</div>
+          <div class="v"><span id="val-mae">1.8</span><small>ms</small></div>
+          <div class="d" id="sub-mae">约束前原始误差 14.6 ms</div>
+        </div>
+        <div class="kpi warn" id="kpi-fix">
+          <div class="k">一致性约束纠偏道数</div>
+          <div class="v"><span id="val-fix">3</span><small>/ 24 道</small></div>
+          <div class="d" id="sub-fix">成功拦截前驱噪声尖峰假拾取</div>
+        </div>
+        <div class="kpi ok" id="kpi-qc">
+          <div class="k">需人工复核道占比</div>
+          <div class="v"><span id="val-qc">12.5</span><small>%</small></div>
+          <div class="d" id="sub-qc">仅需人工质控 3 道 (节省 87.5% 工时)</div>
+        </div>
+      </section>
+
+      <!-- 双栏辅助分析图 -->
+      <section class="grid2">
+        <!-- 左：当前选中道的单道显微镜 -->
+        <div class="view">
+          <div class="view-h">
+            <span id="micro-title">第 #14 道 (偏移距 700m) 波形 + STA/LTA + AIC 局部精修双联图</span>
+            <span class="sp"></span>
+            <span class="hint">点击主剖面任意道切换</span>
+          </div>
+          <svg id="svg-micro" viewBox="0 0 430 250" role="img" aria-label="单道波形与STA/LTA及AIC局部精修图"></svg>
+          <div class="view-f">
+            <div class="legend">
+              <span><i class="line" style="background:#3a6ea5"></i>滤波波形 x(t)</span>
+              <span><i class="line" style="background:#c27a2c"></i>STA/LTA 或概率曲线</span>
+              <span><i class="line" style="background:#6b5aa6"></i>AIC 准则曲线 (极小值精修)</span>
+              <span><i class="line" style="background:#12615a"></i>最终采用初至</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右：偏移距-走时折线拟合反演表层速度与逐道误差对比 -->
+        <div class="view">
+          <div class="view-h">
+            <span>折射走时反演表层速度 (v₀, v₁, h₀) 与约束前后逐道误差 (ms)</span>
+            <span class="sp"></span>
+            <span class="hint" id="vel-fit-hint">h₀ = 109.2 m</span>
+          </div>
+          <svg id="svg-refrac" viewBox="0 0 430 250" role="img" aria-label="偏移距走时折线反演与逐道误差对比图"></svg>
+          <div class="view-f">
+            <div class="legend">
+              <span><i class="line" style="background:#c27a2c"></i>约束前单道误差 |Δt|</span>
+              <span><i class="line" style="background:#12615a"></i>空间约束后误差 |Δt|</span>
+              <span><i class="dash" style="color:#2f7d5b"></i>±4ms (2采样点) 验收容差带</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 动态专业解读 -->
+      <section class="insight" id="insight-box">
+        <div class="tag" id="insight-tag">物探质控解读</div>
+        <div id="insight-text"></div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="demo.js"></script>
+</body>
+</html>
