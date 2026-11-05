@@ -1205,7 +1205,7 @@
     }
     var html;
     if (!p.length) html = homeHTML();
-    else if (p[0] === 'chain') html = global.AtlasExplorer ? global.AtlasExplorer.chain() : chainHTML();
+    else if (p[0] === 'chain') html = chainHTML();
     else if (p[0] === 'cases') html = global.AtlasExplorer ? global.AtlasExplorer.render() : casesHTML();
     else if (p[0] === 'guide') html = guideHTML();
     else if (p[0] === 'admin') html = global.Admin ? global.Admin.route(p, r.q) : notFound('管理模块未加载');
@@ -1225,7 +1225,6 @@
     // 页面级交互
     if (!p.length) { bindHomeMotion(); if(global.Atlas3D) { var release3d = global.Atlas3D.mount(view); mounted = {unmount:release3d}; } }
     if (p[0] === 'cases' && global.AtlasExplorer) global.AtlasExplorer.bind(view,r.q);
-    if (p[0] === 'chain') view.querySelectorAll('.phase-nav a').forEach(function(a){ a.addEventListener('click',function(e){e.preventDefault();var el=document.getElementById(a.getAttribute('href').slice(1));if(el)el.scrollIntoView({behavior:'smooth'});});});
     if (p[0] === 'guide') {
       [].forEach.call(view.querySelectorAll('[data-guide-target]'), function (button) {
         button.addEventListener('click', function () {
