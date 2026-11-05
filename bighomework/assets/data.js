@@ -12,7 +12,7 @@ window.ATLAS = {
     tagline: '按石油作业链条逐环节展示可被深度学习改造的候选场景，标注技术介入点、数据条件与难度等级。',
     version: 'v1.0',
     updated: '2026-11',
-    upstreamNote: '13 个作业环节均已接入案例，其余候选场景可继续扩展。',
+    upstreamNote: '13 个作业环节、61 个场景均已接入可运行案例。',
     email: 'atlas@example.com'
   },
 
@@ -1224,3 +1224,6 @@ window.ATLAS = {
   /* 启动时应用一次用户覆盖 */
   A.reindex();
 })(window.ATLAS);
+
+// All 61 scenes now have a bundled, runnable teaching case.
+window.ATLAS.allScenes.forEach(function(scene){scene.demo=true;});

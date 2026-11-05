@@ -256,6 +256,7 @@
 
       '</div></div></section>' +
 
+      (global.Atlas3D ? global.Atlas3D.html() : '') +
       /* 按环节找 */
       '<section class="section"><div class="wrap">' +
       '<div class="sec-head">' +
@@ -1192,10 +1193,20 @@
     unmountCurrent();
     window.scrollTo(0, 0);
 
+    if (p[0] === 'scene' && global.AtlasCaseLibrary) {
+      var candidates = Cases.bySceneAll(p[1]);
+      var lazyCase = candidates.find(function(c){return c.id === r.q.case;}) || candidates[0];
+      if(lazyCase && lazyCase._lazy) {
+        var requestedHash = location.hash;
+        view.innerHTML = header() + '<main class="wrap" style="padding:80px 0"><div class="empty"><b>正在打开案例</b><p>' + esc(lazyCase.title) + '</p></div></main>' + footer();
+        global.AtlasCaseLibrary.ensure(lazyCase.id).then(function(){if(location.hash === requestedHash)render();}).catch(function(err){if(location.hash !== requestedHash)return;view.innerHTML=header()+'<main class="wrap" style="padding:80px 0"><div class="empty"><b>案例暂时没有载入</b><p>'+esc(err.message)+'</p><button id="retry-case" class="btn">重试</button></div></main>'+footer();document.getElementById('retry-case').onclick=render;});
+        return;
+      }
+    }
     var html;
     if (!p.length) html = homeHTML();
-    else if (p[0] === 'chain') html = chainHTML();
-    else if (p[0] === 'cases') html = casesHTML();
+    else if (p[0] === 'chain') html = global.AtlasExplorer ? global.AtlasExplorer.chain() : chainHTML();
+    else if (p[0] === 'cases') html = global.AtlasExplorer ? global.AtlasExplorer.render() : casesHTML();
     else if (p[0] === 'guide') html = guideHTML();
     else if (p[0] === 'admin') html = global.Admin ? global.Admin.route(p, r.q) : notFound('管理模块未加载');
     else if (p[0] === 'stage') {
@@ -1209,9 +1220,12 @@
     } else html = notFound('页面不存在');
 
     view.innerHTML = header() + html + footer();
+    window.scrollTo(0, 0);
 
     // 页面级交互
-    if (!p.length) bindHomeMotion();
+    if (!p.length) { bindHomeMotion(); if(global.Atlas3D) { var release3d = global.Atlas3D.mount(view); mounted = {unmount:release3d}; } }
+    if (p[0] === 'cases' && global.AtlasExplorer) global.AtlasExplorer.bind(view,r.q);
+    if (p[0] === 'chain') view.querySelectorAll('.phase-nav a').forEach(function(a){ a.addEventListener('click',function(e){e.preventDefault();var el=document.getElementById(a.getAttribute('href').slice(1));if(el)el.scrollIntoView({behavior:'smooth'});});});
     if (p[0] === 'guide') {
       [].forEach.call(view.querySelectorAll('[data-guide-target]'), function (button) {
         button.addEventListener('click', function () {
